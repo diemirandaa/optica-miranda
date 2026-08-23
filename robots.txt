@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diemirandaa.github.io/optica-miranda/sitemap.xml
