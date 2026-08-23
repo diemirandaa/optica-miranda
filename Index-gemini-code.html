@@ -1,379 +1,305 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Óptica Miranda | Lentes & Salud Visual en Paraguay</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --bg-card: rgba(18, 24, 38, 0.7);
-      --bg-card-hover: rgba(28, 36, 56, 0.85);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(99, 102, 241, 0.4);
-      --primary: #6366f1;
-      --primary-light: #818cf8;
-      --accent: #22d3ee;
-      --accent-glow: rgba(34, 211, 238, 0.25);
-      --wa-green: #25D366;
-      --wa-green-glow: rgba(37, 211, 102, 0.3);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
-      --font-heading: 'Syne', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Miranda | Villa Elisa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #06090f;
+            --bg-gradient: radial-gradient(circle at top left, rgba(0, 210, 255, 0.08) 0%, #080c14 40%, #06090f 100%);
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --btn-green: #00ff66;
+            --btn-green-hover: #00cc52;
+            --accent-cyan: #00d2ff;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.05);
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-base);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
 
-    body { overflow-x: hidden; position: relative; }
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            justify-content: flex-start;
+            gap: 40px;
+            padding: 10px 5%;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--card-border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .top-bar span::before {
+            content: "•";
+            color: var(--accent-cyan);
+            margin-right: 8px;
+        }
 
-    /* Ambient Background Glows */
-    .glow-bg {
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 600px;
-      background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.18) 0%, rgba(34, 211, 238, 0.08) 35%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+        }
 
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand-icon {
+            background: #2563eb;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(11, 15, 25, 0.8);
-      border-bottom: 1px solid var(--border);
-    }
+        .brand-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1;
+        }
 
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-    }
+        .brand-text p {
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #fff;
-    }
+        nav {
+            display: flex;
+            gap: 30px;
+        }
 
-    .brand-logo-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: #fff;
-      box-shadow: 0 0 15px var(--accent-glow);
-    }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
 
-    .brand-name {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+        nav a:hover {
+            color: var(--text-main);
+        }
 
-    .brand-tag {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      display: block;
-    }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
 
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: #fff; }
+        .btn-primary {
+            background: var(--btn-green);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 255, 102, 0.2);
+        }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
+        .btn-primary:hover {
+            background: var(--btn-green-hover);
+            transform: translateY(-2px);
+        }
 
-    .btn-wa {
-      background: var(--wa-green);
-      color: #051c0d;
-      font-weight: 700;
-      box-shadow: 0 4px 20px var(--wa-green-glow);
-    }
-    .btn-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
-      background: #28e06c;
-    }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.05);
+        }
 
-    /* Ticker */
-    .ticker-bar {
-      background: rgba(18, 24, 38, 0.5);
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 8px 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .ticker-content { display: inline-block; animation: ticker 35s linear infinite; }
-    .ticker-item { display: inline-flex; align-items: center; gap: 8px; margin-right: 36px; }
-    .ticker-item::before { content: '•'; color: var(--accent); font-size: 1.2rem; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 80px 5%;
+            align-items: center;
+        }
 
-    /* Hero */
-    .hero {
-      padding: 90px 0 70px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      font-size: 0.82rem;
-      color: var(--primary-light);
-      margin-bottom: 24px;
-    }
-    .hero-badge .dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 3.5rem;
-      line-height: 1.08;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-    .hero-title span.gradient {
-      background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 16px; }
+        .badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            color: var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 24px;
+        }
 
-    /* Showcase Card */
-    .hero-card-preview {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-    .selector-header { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
-    .selector-title { font-family: var(--font-heading); font-size: 1.1rem; color: #fff; }
-    .selector-tag { font-size: 0.75rem; color: var(--accent); background: rgba(34, 211, 238, 0.1); padding: 4px 8px; border-radius: 6px; }
-    .glasses-showcase { text-align: center; padding: 20px 0; }
-    .glasses-svg { width: 220px; height: 80px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); transition: transform 0.3s; }
-    .glasses-showcase:hover .glasses-svg { transform: scale(1.05); }
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
 
-    /* Grid & Cards */
-    .section-title-wrap { margin-bottom: 40px; }
-    .section-subtitle { color: var(--primary-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px; }
-    .section-title { font-family: var(--font-heading); font-size: 2.2rem; letter-spacing: -0.02em; }
+        .text-cyan {
+            color: var(--accent-cyan);
+        }
 
-    .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .catalog-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      transition: all 0.3s;
-      position: relative;
-    }
-    .catalog-card:hover {
-      transform: translateY(-4px);
-      background: var(--bg-card-hover);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    }
-    .card-icon {
-      width: 44px; height: 44px; border-radius: 10px; background: rgba(99, 102, 241, 0.1);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary-light);
-    }
-    .card-title { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 8px; }
-    .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-    .card-link { color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600; }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 40px;
+            max-width: 90%;
+            line-height: 1.6;
+        }
 
-    /* Process Section */
-    .process-section { padding: 80px 0; background: rgba(18, 24, 38, 0.3); }
-    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
-    .process-card { background: rgba(18, 24, 38, 0.6); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; }
-    .step-number { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.15); margin-bottom: 8px; }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+        }
 
-    /* Floating WA */
-    .fab-wa {
-      position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%;
-      background: var(--wa-green); display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 24px var(--wa-green-glow); z-index: 99; transition: transform 0.2s;
-    }
-    .fab-wa:hover { transform: scale(1.1); }
+        /* Card Destacado */
+        .featured-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .catalog-grid, .process-grid { grid-template-columns: 1fr; }
-      nav { display: none; }
-      .hero-title { font-size: 2.5rem; }
-    }
-  </style>
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .card-header h3 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .card-badge {
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            background: rgba(0, 210, 255, 0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+        }
+
+        .glasses-mockup {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* SVG simulación lentes */
+        .glasses-svg {
+            width: 180px;
+            stroke: #4f46e5;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                display: none;
+            }
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="glow-bg"></div>
-
-  <div class="ticker-bar">
-    <div class="ticker-content">
-      <span class="ticker-item">Nuevos armazones ingresados esta semana</span>
-      <span class="ticker-item">Envíos asegurados a todo Paraguay</span>
-      <span class="ticker-item">Lentes de contacto con graduación express</span>
-      <span class="ticker-item">Filtro Blue Defense disponible en local y envío</span>
+    <div class="top-bar">
+        <span>Envíos a todo Paraguay</span>
+        <span>Lentes de contacto con graduación express</span>
+        <span>Filtro Blue Defense disponible en local y envío</span>
     </div>
-  </div>
 
-  <header>
-    <div class="container nav-wrapper">
-      <a href="#" class="brand">
-        <div class="brand-logo-mark">M</div>
-        <div>
-          <span class="brand-name">Óptica Miranda</span>
-          <span class="brand-tag">Villa Elisa · Paraguay</span>
+    <header>
+        <div class="brand">
+            <div class="brand-icon">M</div>
+            <div class="brand-text">
+                <h1>Óptica Miranda</h1>
+                <p>VILLA ELISA - PARAGUAY</p>
+            </div>
         </div>
-      </a>
-      
-      <nav>
-        <a href="#colecciones">Colecciones</a>
-        <a href="#proceso">Cómo comprar</a>
-        <a href="#ubicacion">Ubicación</a>
-      </nav>
+        
+        <nav>
+            <a href="#">Colecciones</a>
+            <a href="#">Cómo comprar</a>
+            <a href="#">Ubicación</a>
+        </nav>
+        
+        <a href="#" class="btn btn-primary">Escribinos</a>
+    </header>
 
-      <a href="https://wa.me/595981155755" target="_blank" rel="noopener" class="btn btn-wa">Escribinos</a>
-    </div>
-  </header>
+    <main class="hero">
+        <div class="hero-content">
+            <div class="badge">Envíos a todo el país</div>
+            <h2>Claridad<br>visual con<br><span class="text-cyan">estilo propio</span></h2>
+            <p>Armazones de diseño, filtro azul para pantallas y lentes de contacto. Asesoramiento directo sin vueltas.</p>
+            
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">Consultar WhatsApp</a>
+                <a href="#" class="btn btn-outline">Ver Colecciones</a>
+            </div>
+        </div>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <div class="hero-badge"><span class="dot"></span> Envíos a todo el país</div>
-        <h1 class="hero-title">Claridad visual con <span class="gradient">estilo propio</span></h1>
-        <p class="hero-desc">Armazones de diseño, filtro azul para pantallas y lentes de contacto. Asesoramiento directo sin vueltas.</p>
-        <div class="hero-actions">
-          <a href="https://wa.me/595981155755" target="_blank" rel="noopener" class="btn btn-wa">Consultar WhatsApp</a>
-          <a href="#colecciones" class="btn btn-ghost">Ver Colecciones</a>
+        <div class="featured-card">
+            <div class="card-header">
+                <h3>Modelo Destacado</h3>
+                <span class="card-badge">Nuevo Ingreso</span>
+            </div>
+            <div class="glasses-mockup">
+                <svg class="glasses-svg" viewBox="0 0 100 40">
+                    <rect x="15" y="10" width="30" height="18" rx="6" />
+                    <rect x="55" y="10" width="30" height="18" rx="6" />
+                    <path d="M 45 18 Q 50 14 55 18" />
+                </svg>
+            </div>
         </div>
-      </div>
-
-      <div class="hero-card-preview">
-        <div class="selector-header">
-          <span class="selector-title">Modelo Destacado</span>
-          <span class="selector-tag">Nuevo Ingreso</span>
-        </div>
-        <div class="glasses-showcase">
-          <svg class="glasses-svg" viewBox="0 0 200 70" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <path d="M 20 20 L 75 20 Q 85 20 85 35 Q 85 55 60 55 L 35 55 Q 15 55 15 35 Z" stroke="#6366f1" fill="rgba(99, 102, 241, 0.08)"/>
-            <path d="M 115 20 L 170 20 Q 185 20 185 35 Q 185 55 165 55 L 140 55 Q 115 55 115 35 Z" stroke="#6366f1" fill="rgba(99, 102, 241, 0.08)"/>
-            <path d="M 85 28 Q 100 22 115 28" stroke="#22d3ee" stroke-width="3"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <section id="colecciones" style="padding: 60px 0;">
-      <div class="section-title-wrap">
-        <div class="section-subtitle">Catálogo</div>
-        <h2 class="section-title">Soluciones visuales completas</h2>
-      </div>
-
-      <div class="catalog-grid">
-        <div class="catalog-card">
-          <div class="card-icon">👓</div>
-          <h3 class="card-title">Armazones de Receta</h3>
-          <p class="card-desc">Acetato premium, metal ligero y modelos geométricos modernos.</p>
-          <a href="https://wa.me/595981155755" class="card-link" target="_blank">Consultar stock →</a>
-        </div>
-        <div class="catalog-card">
-          <div class="card-icon">☀️</div>
-          <h3 class="card-title">Lentes de Sol</h3>
-          <p class="card-desc">Protección UV400 certificada con opción de graduación personalizada.</p>
-          <a href="https://wa.me/595981155755" class="card-link" target="_blank">Ver modelos →</a>
-        </div>
-        <div class="catalog-card">
-          <div class="card-icon">💻</div>
-          <h3 class="card-title">Filtro Luz Azul</h3>
-          <p class="card-desc">Escudo para descansar la vista frente a computadoras y celulares.</p>
-          <a href="https://wa.me/595981155755" class="card-link" target="_blank">Cotizar Filtro →</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <a href="https://wa.me/595981155755" class="fab-wa" target="_blank" rel="noopener">💬</a>
+    </main>
 
 </body>
 </html>
