@@ -3,54 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Óptica Miranda | Villa Elisa</title>
+    <title>Óptica Miranda | Claridad visual con estilo propio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-base: #06090f;
-            --bg-gradient: radial-gradient(circle at top left, rgba(0, 210, 255, 0.08) 0%, #080c14 40%, #06090f 100%);
-            --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --btn-green: #00ff66;
-            --btn-green-hover: #00cc52;
+            --bg-dark: #0a0f16;
+            --bg-darker: #05080c;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --neon-green: #00ff66;
+            --neon-green-hover: #00cc52;
             --accent-cyan: #00d2ff;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --card-border: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-base);
-            background-image: var(--bg-gradient);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 50%, rgba(0, 210, 255, 0.05), transparent 40%), 
+                radial-gradient(circle at 90% 30%, rgba(0, 255, 102, 0.03), transparent 40%);
+            color: var(--text-light);
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Top Bar */
         .top-bar {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 5%;
             display: flex;
             justify-content: flex-start;
-            gap: 40px;
-            padding: 10px 5%;
-            background: rgba(0,0,0,0.3);
-            border-bottom: 1px solid var(--card-border);
+            gap: 32px;
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--text-gray);
+            flex-wrap: wrap;
         }
+        
+        .top-bar span { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        
         .top-bar span::before {
-            content: "•";
-            color: var(--accent-cyan);
-            margin-right: 8px;
+            content: "";
+            display: block;
+            width: 5px;
+            height: 5px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
         }
 
         /* Header */
@@ -58,192 +70,223 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 24px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
-        .brand {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
+            /* Filtro clave: Invierte el color y lo vuelve blanco. Requiere que la imagen sea PNG transparente */
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span.title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span.subtitle {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav { 
+            display: flex; 
+            gap: 36px; 
         }
         
-        .brand-icon {
-            background: #2563eb;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-
-        .brand-text h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .brand-text p {
-            font-size: 0.55rem;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
         nav a {
-            color: var(--text-muted);
+            color: var(--text-gray);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
-
-        nav a:hover {
-            color: var(--text-main);
+        
+        nav a:hover { 
+            color: var(--text-light); 
         }
 
         .btn {
-            padding: 10px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 26px;
             border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 700;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
             border: none;
+            cursor: pointer;
         }
 
-        .btn-primary {
-            background: var(--btn-green);
+        .btn-green {
+            background-color: var(--neon-green);
             color: #000;
-            box-shadow: 0 4px 15px rgba(0, 255, 102, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
         }
-
-        .btn-primary:hover {
-            background: var(--btn-green-hover);
+        
+        .btn-green:hover {
+            background-color: var(--neon-green-hover);
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 102, 0.25);
         }
 
         .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid rgba(255,255,255,0.2);
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
         }
-
+        
         .btn-outline:hover {
-            background: rgba(255,255,255,0.05);
+            background-color: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             padding: 80px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
             align-items: center;
         }
 
+        .hero-content { 
+            max-width: 620px; 
+        }
+
         .badge {
-            display: inline-block;
-            background: rgba(0, 210, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(0, 210, 255, 0.08);
+            border: 1px solid rgba(0, 210, 255, 0.15);
             color: var(--accent-cyan);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
-            margin-bottom: 24px;
+            font-weight: 700;
+            margin-bottom: 28px;
         }
 
-        .hero h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
             line-height: 1.05;
             margin-bottom: 24px;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
         }
-
-        .text-cyan {
-            color: var(--accent-cyan);
+        
+        .hero h1 span { 
+            color: var(--accent-cyan); 
         }
 
         .hero p {
-            color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-gray);
             margin-bottom: 40px;
-            max-width: 90%;
             line-height: 1.6;
         }
 
-        .hero-actions {
-            display: flex;
-            gap: 16px;
+        .actions { 
+            display: flex; 
+            gap: 16px; 
         }
 
-        /* Card Destacado */
-        .featured-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
+        /* Floating Card */
+        .card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            position: relative;
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-
+        
         .card-header h3 {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
-
-        .card-badge {
-            font-size: 0.7rem;
+        
+        .card-tag {
+            background-color: rgba(0, 210, 255, 0.1);
             color: var(--accent-cyan);
-            background: rgba(0, 210, 255, 0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 210, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .glasses-mockup {
-            height: 120px;
+        .glasses-illustration {
             display: flex;
             justify-content: center;
-            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .glasses-illustration svg {
+            width: 260px;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 210, 255, 0.15));
         }
 
-        /* SVG simulación lentes */
-        .glasses-svg {
-            width: 180px;
-            stroke: #4f46e5;
-            stroke-width: 3;
-            fill: none;
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero { 
+                grid-template-columns: 1fr; 
+                gap: 50px; 
+            }
+            nav { 
+                display: none; 
+            }
+            .hero h1 { 
+                font-size: 3.5rem; 
+            }
         }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero {
-                grid-template-columns: 1fr;
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
             }
-            nav {
-                display: none;
+            .hero h1 { 
+                font-size: 2.8rem; 
             }
-            .hero h2 {
-                font-size: 3rem;
+            .top-bar { 
+                justify-content: center; 
+            }
+            .actions { 
+                flex-direction: column; 
             }
         }
     </style>
@@ -251,17 +294,18 @@
 <body>
 
     <div class="top-bar">
-        <span>Envíos a todo Paraguay</span>
+        <span>Envíos asegurados a todo Paraguay</span>
         <span>Lentes de contacto con graduación express</span>
         <span>Filtro Blue Defense disponible en local y envío</span>
     </div>
 
     <header>
-        <div class="brand">
-            <div class="brand-icon">M</div>
-            <div class="brand-text">
-                <h1>Óptica Miranda</h1>
-                <p>VILLA ELISA - PARAGUAY</p>
+        <div class="logo-container">
+            <!-- Referencia al logo de tu repo -->
+            <img src="logo.png" alt="Óptica Miranda" class="logo-img">
+            <div class="logo-text">
+                <span class="title">Óptica Miranda</span>
+                <span class="subtitle">VILLA ELISA - PARAGUAY</span>
             </div>
         </div>
         
@@ -271,31 +315,36 @@
             <a href="#">Ubicación</a>
         </nav>
         
-        <a href="#" class="btn btn-primary">Escribinos</a>
+        <a href="#" class="btn btn-green">Escribinos</a>
     </header>
 
     <main class="hero">
         <div class="hero-content">
-            <div class="badge">Envíos a todo el país</div>
-            <h2>Claridad<br>visual con<br><span class="text-cyan">estilo propio</span></h2>
+            <div class="badge">
+                <span style="display:inline-block; margin-right:4px;">•</span> Envíos a todo el país
+            </div>
+            
+            <h1>Claridad<br>visual con<br><span>estilo propio</span></h1>
+            
             <p>Armazones de diseño, filtro azul para pantallas y lentes de contacto. Asesoramiento directo sin vueltas.</p>
             
-            <div class="hero-actions">
-                <a href="#" class="btn btn-primary">Consultar WhatsApp</a>
+            <div class="actions">
+                <a href="#" class="btn btn-green">Consultar WhatsApp</a>
                 <a href="#" class="btn btn-outline">Ver Colecciones</a>
             </div>
         </div>
 
-        <div class="featured-card">
+        <div class="card">
             <div class="card-header">
                 <h3>Modelo Destacado</h3>
-                <span class="card-badge">Nuevo Ingreso</span>
+                <span class="card-tag">Nuevo Ingreso</span>
             </div>
-            <div class="glasses-mockup">
-                <svg class="glasses-svg" viewBox="0 0 100 40">
-                    <rect x="15" y="10" width="30" height="18" rx="6" />
-                    <rect x="55" y="10" width="30" height="18" rx="6" />
-                    <path d="M 45 18 Q 50 14 55 18" />
+            <div class="glasses-illustration">
+                <!-- SVG estilizado y escalable -->
+                <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="25" width="65" height="35" rx="12" stroke="#4f46e5" stroke-width="3"/>
+                    <rect x="115" y="25" width="65" height="35" rx="12" stroke="#4f46e5" stroke-width="3"/>
+                    <path d="M85 40 Q100 30 115 40" stroke="#4f46e5" stroke-width="3" fill="none"/>
                 </svg>
             </div>
         </div>
