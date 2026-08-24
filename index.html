@@ -134,15 +134,15 @@
 
   /* hero — un solo mensaje, no cuatro tratamientos de texto */
   .hero{padding:64px 0 0; overflow:hidden;}
-  .hero-grid{display:grid;grid-template-columns:minmax(300px,460px) 1fr;align-items:center;gap:0;}
-  .hero-copy{padding-left:max(32px, calc((100vw - 1140px)/2 + 32px)); padding-right:48px; padding-bottom:72px;}
-  .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(28px,3.6vw,38px);line-height:1.22;max-width:15ch;}
-  .hero .lede{margin-top:22px;max-width:420px;font-size:17px;color:var(--ink-soft);}
+  .hero-grid{display:grid;grid-template-columns:minmax(280px,38%) minmax(0,1fr);align-items:center;gap:0;}
+  .hero-copy{min-width:0;padding-left:max(32px, calc((100vw - 1140px)/2 + 32px)); padding-right:48px; padding-bottom:72px;}
+  .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(26px,3.2vw,38px);line-height:1.22;max-width:16ch;overflow-wrap:break-word;word-break:normal;text-wrap:balance;}
+  .hero .lede{margin-top:22px;max-width:38ch;font-size:17px;color:var(--ink-soft);}
   .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
 
   /* la foto sangra hasta el borde derecho: sin padding ahí, radio solo del lado del texto */
   .photo-slot{
-    position:relative; height:min(78vh,640px); margin-top:24px;
+    position:relative; height:min(78vh,640px); margin-top:24px; min-width:0;
     border-radius:72px 0 0 40px; overflow:hidden; background:var(--brand-mist);
   }
   .photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -243,9 +243,10 @@
     nav.links{display:none;}
     .menu-btn{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
-    .hero-copy{padding:0 20px 40px;}
-    .photo-slot{height:60vh; margin:0 20px; border-radius:40px 40px 24px 24px; order:-1;}
-    .hero{padding:28px 0 0;}
+    .hero-copy{padding:24px 20px 32px;}
+    .hero-title{max-width:none;}
+    .photo-slot{height:34vh; min-height:220px; margin:0 20px 4px; border-radius:32px;}
+    .hero{padding:0;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(3){border-left:none;}
     .stat{border-bottom:1px solid var(--brand-line);}
@@ -257,6 +258,9 @@
     .foot-grid{grid-template-columns:1fr;}
     .nav-inner{height:68px;}
     .brand-mark img{height:34px;width:34px;}
+    .hero-title{font-size:25px;}
+    .hero .lede{max-width:none;}
+    .photo-slot{height:28vh; min-height:190px;}
   }
 </style>
 </head>
@@ -443,7 +447,7 @@
 </section>
 
 <a class="wa-float" href="https://wa.me/595981155755" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-11.7-7.1L4 20l5.3-1.4A8 8 0 0 0 20 12z"/></svg>
+  <svg viewBox="0 0 32 32"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.703 4.612 1.912 6.494L4 29l7.703-1.881A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm0 21.6c-1.94 0-3.755-.566-5.276-1.541l-.379-.24-4.573 1.116 1.144-4.457-.247-.396A9.552 9.552 0 0 1 5.4 15c0-5.85 4.751-10.6 10.601-10.6S26.6 9.15 26.6 15 21.851 24.6 16.001 24.6zm5.24-7.34c-.287-.144-1.698-.838-1.961-.934-.263-.096-.455-.144-.646.144-.192.288-.742.934-.909 1.126-.168.192-.335.216-.622.072-.287-.144-1.212-.447-2.309-1.427-.853-.761-1.429-1.701-1.596-1.989-.168-.288-.018-.443.126-.587.129-.129.287-.336.431-.504.144-.168.192-.288.287-.48.096-.192.048-.36-.024-.504-.072-.144-.646-1.559-.885-2.134-.233-.56-.47-.484-.646-.493l-.55-.01c-.192 0-.504.072-.768.36-.263.288-1.006.984-1.006 2.4 0 1.416 1.03 2.784 1.174 2.976.144.192 2.027 3.093 4.911 4.337.686.296 1.221.473 1.638.605.688.219 1.314.188 1.809.114.552-.082 1.698-.694 1.938-1.365.24-.671.24-1.246.168-1.365-.072-.12-.263-.192-.55-.336z"/></svg>
 </a>
 
 <footer>
