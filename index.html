@@ -127,17 +127,15 @@
   .mobile-panel{display:none;flex-direction:column;background:var(--paper);border-top:1px solid var(--brand-line);}
   .mobile-panel a{padding:16px 32px;font-size:15px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--brand-line);}
   .mobile-panel.open{display:flex;}
-  .hero{padding:64px 0 0; overflow:hidden;}
-  .hero-grid{display:grid;grid-template-columns:minmax(300px,42%) minmax(0,1fr);align-items:center;gap:0;}
-  .hero-copy{min-width:0;padding-left:max(32px, calc((100vw - 1140px)/2 + 32px)); padding-right:48px; padding-bottom:72px;}
-  .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(28px,3.4vw,42px);line-height:1.2;max-width:17ch;overflow-wrap:break-word;text-wrap:balance;}
+  .hero{padding:64px 0 88px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;align-items:center;gap:56px;}
+  .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(28px,3.4vw,42px);line-height:1.2;overflow-wrap:break-word;text-wrap:balance;}
   .hero .lede{margin-top:22px;max-width:38ch;font-size:17px;color:var(--ink-soft);}
   .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
   .photo-slot{
-    position:relative; width:100%; max-width:480px; aspect-ratio:3/4; margin:24px 0 0 auto; min-width:0;
-    border-radius:56px 0 0 40px; overflow:hidden; background:var(--brand-mist);
+    width:100%; aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:var(--brand-mist);
   }
-  .photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
+  .photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;}
   .stats{border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);background:var(--paper-2);}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
   .stat{padding:32px 24px;text-align:center;border-left:1px solid var(--brand-line);}
@@ -216,12 +214,9 @@
   @media (max-width:980px){
     nav.links{display:none;}
     .menu-btn{display:flex;}
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-copy{padding:24px 20px 32px;}
-    .hero-title{max-width:none;}
-    .photo-slot{max-width:none; aspect-ratio:4/5; margin:0 20px 4px; border-radius:32px;}
-    .photo-slot img{object-position:42% 22%;}
-    .hero{padding:0;}
+    .hero-grid{grid-template-columns:1fr; gap:28px;}
+    .hero-grid .photo-slot{order:-1; aspect-ratio:4/5;}
+    .hero{padding:28px 0 48px;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(3){border-left:none;}
     .stat{border-bottom:1px solid var(--brand-line);}
@@ -265,7 +260,7 @@
   </div>
 </header>
 <section class="hero">
-  <div class="hero-grid">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">Óptica en Villa Elisa · Envíos a todo Paraguay</span>
       <h1 class="hero-title">Elegí el que te gusta, te lo mandamos a donde estés.</h1>
