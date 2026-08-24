@@ -134,18 +134,18 @@
 
   /* hero — un solo mensaje, no cuatro tratamientos de texto */
   .hero{padding:64px 0 0; overflow:hidden;}
-  .hero-grid{display:grid;grid-template-columns:minmax(300px,42%) minmax(0,1fr);align-items:center;gap:0;}
+  .hero-grid{display:grid;grid-template-columns:minmax(300px,42%) minmax(0, min(1fr, 760px));align-items:center;gap:0;}
   .hero-copy{min-width:0;padding-left:max(32px, calc((100vw - 1140px)/2 + 32px)); padding-right:48px; padding-bottom:72px;}
   .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(28px,3.4vw,42px);line-height:1.2;max-width:17ch;overflow-wrap:break-word;text-wrap:balance;}
   .hero .lede{margin-top:22px;max-width:38ch;font-size:17px;color:var(--ink-soft);}
   .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
 
-  /* la foto sangra hasta el borde derecho: proporción fija, no depende del alto de pantalla */
+  /* la foto sangra hasta el borde derecho: alto calculado directo, sin pelear con aspect-ratio */
   .photo-slot{
-    position:relative; width:100%; aspect-ratio:3/4; max-height:620px; margin-top:24px; min-width:0;
+    position:relative; width:100%; height:clamp(320px, 42vw, 560px); margin-top:24px; min-width:0;
     border-radius:72px 0 0 40px; overflow:hidden; background:var(--brand-mist);
   }
-  .photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;}
+  .photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center 16%;display:block;}
 
   /* stats */
   .stats{border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);background:var(--paper-2);}
@@ -245,7 +245,7 @@
     .hero-grid{grid-template-columns:1fr;}
     .hero-copy{padding:24px 20px 32px;}
     .hero-title{max-width:none;}
-    .photo-slot{aspect-ratio:4/3; max-height:340px; margin:0 20px 4px; border-radius:32px;}
+    .photo-slot{height:clamp(240px, 46vw, 360px); margin:0 20px 4px; border-radius:32px;}
     .hero{padding:0;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(3){border-left:none;}
@@ -260,7 +260,7 @@
     .brand-mark img{height:34px;width:34px;}
     .hero-title{font-size:25px;}
     .hero .lede{max-width:none;}
-    .photo-slot{aspect-ratio:1/1; max-height:280px;}
+    .photo-slot{height:clamp(220px, 60vw, 300px);}
   }
 </style>
 </head>
