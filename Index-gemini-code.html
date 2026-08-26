@@ -1,354 +1,349 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Óptica Miranda | Claridad visual con estilo propio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #0a0f16;
-            --bg-darker: #05080c;
-            --text-light: #ffffff;
-            --text-gray: #94a3b8;
-            --neon-green: #00ff66;
-            --neon-green-hover: #00cc52;
-            --accent-cyan: #00d2ff;
-            --border-color: rgba(255, 255, 255, 0.08);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Óptica Miranda | Óptica en Villa Elisa, Paraguay - DEMO</title>
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 10% 50%, rgba(0, 210, 255, 0.05), transparent 40%), 
-                radial-gradient(circle at 90% 30%, rgba(0, 255, 102, 0.03), transparent 40%);
-            color: var(--text-light);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
+<style>
+:root {
+  --primary: #0B4A32;
+  --primary-light: #0D6A45;
+  --primary-lighter: #1A8B5E;
+  --accent: #F5A623;
+  --accent-light: #FFB84D;
+  --dark: #1a1a1a;
+  --gray-900: #2d2d2d;
+  --gray-800: #3d3d3d;
+  --gray-700: #4d4d4d;
+  --gray-600: #656565;
+  --gray-500: #7d7d7d;
+  --gray-400: #a0a0a0;
+  --gray-300: #c8c8c8;
+  --gray-200: #e8e8e8;
+  --gray-100: #f5f5f5;
+  --white: #ffffff;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.2);
+  --radius: 8px;
+  --transition: all 0.3s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--gray-800); background: var(--white); line-height: 1.6; }
+h1 { font-family: var(--font-serif); font-size: clamp(2rem,5vw,3.2rem); font-weight:700; line-height:1.2; color: var(--dark); margin-bottom: var(--spacing-md); letter-spacing:-0.02em; }
+h2 { font-family: var(--font-serif); font-size: clamp(1.6rem,4vw,2.2rem); font-weight:700; color: var(--dark); margin-bottom: var(--spacing-sm); letter-spacing:-0.01em; }
+h3 { font-family: var(--font-sans); font-size: 1.05rem; font-weight:600; color: var(--primary); margin-bottom: var(--spacing-xs); }
+p { color: var(--gray-700); margin-bottom: var(--spacing-sm); }
+a { color: var(--primary); text-decoration:none; transition: var(--transition); }
+a:hover { color: var(--primary-light); }
+.container { max-width:1200px; margin:0 auto; padding: 0 var(--spacing-lg); }
+section { padding: var(--spacing-2xl) 0; }
 
-        /* Top Bar */
-        .top-bar {
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 10px 5%;
-            display: flex;
-            justify-content: flex-start;
-            gap: 32px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.75rem;
-            color: var(--text-gray);
-            flex-wrap: wrap;
-        }
-        
-        .top-bar span { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-        }
-        
-        .top-bar span::before {
-            content: "";
-            display: block;
-            width: 5px;
-            height: 5px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-        }
+.btn { display:inline-block; padding: var(--spacing-sm) var(--spacing-lg); font-weight:600; border-radius: var(--radius); cursor:pointer; transition: var(--transition); text-align:center; letter-spacing:0.2px; }
+.btn-primary { background: var(--primary); color: var(--white); box-shadow: var(--shadow-md); }
+.btn-primary:hover { background: var(--primary-light); box-shadow: var(--shadow-lg); transform: translateY(-2px); color:var(--white);}
+.btn-secondary { background: var(--white); color: var(--primary); border:2px solid var(--primary); }
+.btn-secondary:hover { background: var(--primary); color: var(--white); }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
+header { background: var(--white); border-bottom:1px solid var(--gray-200); padding: var(--spacing-sm) var(--spacing-lg); position: sticky; top:0; z-index:100; box-shadow: var(--shadow-sm); }
+.header-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: var(--spacing-sm); }
+.logo { display:flex; align-items:center; gap: var(--spacing-sm); font-family: var(--font-serif); font-size:1.25rem; font-weight:700; color: var(--primary); }
+.logo img { height:38px; width:auto; }
+.logo-sub { display:block; font-family: var(--font-sans); font-size:0.7rem; font-weight:500; color: var(--gray-500); letter-spacing:0.5px; }
+nav { display:flex; gap: var(--spacing-md); align-items:center; flex-wrap:wrap; }
+nav a { font-weight:500; font-size:0.9rem; color: var(--gray-700); padding: var(--spacing-xs) var(--spacing-sm); border-radius:4px; }
+nav a:hover { color: var(--primary); background: var(--gray-100); }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+.hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lighter) 100%); color: var(--white); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-40%; right:-30%; width:600px; height:600px; background: rgba(255,255,255,0.06); border-radius:50%; pointer-events:none; }
+.hero .container { position:relative; z-index:2; display:grid; grid-template-columns: 1.1fr 1fr; gap: var(--spacing-2xl); align-items:center; }
+.hero-badge { display:inline-block; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius:999px; font-size:0.8rem; font-weight:600; letter-spacing:0.3px; margin-bottom: var(--spacing-md); }
+.hero h1 { color: var(--white); }
+.hero p { color: rgba(255,255,255,0.92); font-size:1.05rem; margin-bottom: var(--spacing-lg); }
+.hero-actions { display:flex; gap: var(--spacing-sm); flex-wrap:wrap; }
+.hero-actions .btn-secondary { background: rgba(255,255,255,0.08); color:var(--white); border-color: rgba(255,255,255,0.5); }
+.hero-actions .btn-secondary:hover { background: var(--white); color: var(--primary); }
+.hero-image-wrap img { width:100%; border-radius: var(--radius); box-shadow: var(--shadow-xl); display:block; }
 
-        .logo-img {
-            height: 38px;
-            width: auto;
-            /* Filtro clave: Invierte el color y lo vuelve blanco. Requiere que la imagen sea PNG transparente */
-            filter: brightness(0) invert(1);
-        }
+.stats-section { background: var(--gray-100); padding: var(--spacing-xl) 0; }
+.stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: var(--spacing-lg); text-align:center; }
+.stat-number { font-family: var(--font-serif); font-size:2.2rem; font-weight:700; color: var(--primary); }
+.stat-label { font-size:0.85rem; color: var(--gray-600); text-transform:uppercase; letter-spacing:0.4px; font-weight:600; margin-top:4px; }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
+.style-section { display:grid; grid-template-columns: 1fr 1.2fr; gap: var(--spacing-2xl); align-items:center; }
+.style-section img { width:100%; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
+.style-chips { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+.style-chip { background: var(--white); border:1px solid var(--gray-200); border-radius: var(--radius); padding: var(--spacing-md); transition: var(--transition); }
+.style-chip:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.style-chip h3 { margin-bottom: 4px; }
+.style-chip p { font-size:0.9rem; margin-bottom:0; }
 
-        .logo-text span.title {
-            font-weight: 800;
-            font-size: 1.25rem;
-            line-height: 1.1;
-            letter-spacing: -0.5px;
-        }
+.eyebrow { color: var(--accent); font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; margin-bottom: var(--spacing-xs); display:block; }
 
-        .logo-text span.subtitle {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-gray);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+.services-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-xl); }
+.service-card { background: var(--white); border:1px solid var(--gray-200); border-radius: var(--radius); padding: var(--spacing-lg); transition: var(--transition); box-shadow: var(--shadow-sm); }
+.service-card:hover { box-shadow: var(--shadow-lg); border-color: var(--primary); transform: translateY(-4px); }
+.service-card p { font-size:0.92rem; margin-bottom:0; }
 
-        nav { 
-            display: flex; 
-            gap: 36px; 
-        }
-        
-        nav a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        nav a:hover { 
-            color: var(--text-light); 
-        }
+.process-section { background: var(--gray-100); }
+.process-steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-xl); }
+.process-step { background: var(--white); text-align:left; padding: var(--spacing-lg); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.process-number { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; background: var(--primary); color:var(--white); border-radius:50%; font-family: var(--font-serif); font-size:1.3rem; font-weight:700; margin-bottom: var(--spacing-sm); }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 26px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
+.faq { max-width: 800px; margin: var(--spacing-xl) auto 0; }
+.faq-item { border-bottom:1px solid var(--gray-300); padding: var(--spacing-md) 0; }
+.faq-item:last-child { border-bottom:none; }
+.faq-question { font-weight:600; color: var(--primary); margin-bottom: var(--spacing-xs); }
+.faq-answer { color: var(--gray-700); font-size:0.95rem; margin-bottom:0; }
 
-        .btn-green {
-            background-color: var(--neon-green);
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
-        }
-        
-        .btn-green:hover {
-            background-color: var(--neon-green-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 255, 102, 0.25);
-        }
+.hours-location { display:grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-2xl); }
+.hours-table { width:100%; border-collapse: collapse; margin-top: var(--spacing-sm); }
+.hours-table td { padding: var(--spacing-sm) 0; border-bottom:1px solid var(--gray-200); font-size:0.95rem; }
+.hours-table td:first-child { color: var(--gray-600); font-weight:500; }
+.hours-table td:last-child { text-align:right; font-weight:600; color: var(--dark); }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--border-color);
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
+.cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lighter) 100%); color: var(--white); text-align:center; }
+.cta-section h2 { color: var(--white); }
+.cta-section p { color: rgba(255,255,255,0.9); max-width:500px; margin: 0 auto var(--spacing-lg); }
+.cta-section .btn-primary { background: var(--accent); }
+.cta-section .btn-primary:hover { background: var(--accent-light); }
 
-        /* Hero Section */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            padding: 80px 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-            align-items: center;
-        }
+footer { background: var(--dark); color: var(--white); padding: var(--spacing-xl) 0; }
+.footer-content { display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: var(--spacing-xl); }
+.footer-brand { display:flex; align-items:center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); font-family: var(--font-serif); font-size:1.1rem; font-weight:700; }
+.footer-brand img { height:32px; }
+.footer-section h4 { color: var(--accent); margin-bottom: var(--spacing-sm); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.footer-section ul { list-style:none; }
+.footer-section li { margin-bottom: var(--spacing-xs); }
+.footer-section a { color: rgba(255,255,255,0.75); font-size:0.9rem; }
+.footer-section a:hover { color: var(--accent); }
+.footer-bottom { max-width:1200px; margin: var(--spacing-xl) auto 0; padding: var(--spacing-lg) var(--spacing-lg) 0; border-top:1px solid rgba(255,255,255,0.15); text-align:center; color: rgba(255,255,255,0.6); font-size:0.85rem; }
 
-        .hero-content { 
-            max-width: 620px; 
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: rgba(0, 210, 255, 0.08);
-            border: 1px solid rgba(0, 210, 255, 0.15);
-            color: var(--accent-cyan);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 28px;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
-        
-        .hero h1 span { 
-            color: var(--accent-cyan); 
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-
-        .actions { 
-            display: flex; 
-            gap: 16px; 
-        }
-
-        /* Floating Card */
-        .card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(12px);
-            position: relative;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-        }
-        
-        .card-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        
-        .card-tag {
-            background-color: rgba(0, 210, 255, 0.1);
-            color: var(--accent-cyan);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .glasses-illustration {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-        }
-        
-        .glasses-illustration svg {
-            width: 260px;
-            height: auto;
-            filter: drop-shadow(0 8px 16px rgba(0, 210, 255, 0.15));
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero { 
-                grid-template-columns: 1fr; 
-                gap: 50px; 
-            }
-            nav { 
-                display: none; 
-            }
-            .hero h1 { 
-                font-size: 3.5rem; 
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-            }
-            .hero h1 { 
-                font-size: 2.8rem; 
-            }
-            .top-bar { 
-                justify-content: center; 
-            }
-            .actions { 
-                flex-direction: column; 
-            }
-        }
-    </style>
+@media (max-width: 860px) {
+  .hero .container, .style-section, .hours-location { grid-template-columns: 1fr; }
+  .hero-image-wrap { order:-1; }
+  .footer-content { grid-template-columns: 1fr 1fr; }
+  nav { width:100%; justify-content:flex-start; }
+}
+</style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <span>Envíos asegurados a todo Paraguay</span>
-        <span>Lentes de contacto con graduación express</span>
-        <span>Filtro Blue Defense disponible en local y envío</span>
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="https://diemirandaa.github.io/optica-miranda/logo.png" alt="Óptica Miranda">
+      <span>Óptica Miranda<span class="logo-sub">Villa Elisa · Paraguay</span></span>
     </div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo comprar</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="https://wa.me/595981155755" class="btn btn-primary" style="padding:8px 18px;">Escribinos</a>
+    </nav>
+  </div>
+</header>
 
-    <header>
-        <div class="logo-container">
-            <!-- Referencia al logo de tu repo -->
-            <img src="logo.png" alt="Óptica Miranda" class="logo-img">
-            <div class="logo-text">
-                <span class="title">Óptica Miranda</span>
-                <span class="subtitle">VILLA ELISA - PARAGUAY</span>
-            </div>
-        </div>
-        
-        <nav>
-            <a href="#">Colecciones</a>
-            <a href="#">Cómo comprar</a>
-            <a href="#">Ubicación</a>
-        </nav>
-        
-        <a href="#" class="btn btn-green">Escribinos</a>
-    </header>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="hero-badge">Óptica en Villa Elisa · Envíos a todo Paraguay</span>
+      <h1>Elegí el que te gusta, te lo mandamos a donde estés.</h1>
+      <p>Consultanos tu graduación por WhatsApp y lo recibís en tu casa, estés donde estés en Paraguay.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/595981155755" class="btn btn-primary">Escribinos por WhatsApp</a>
+        <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="https://diemirandaa.github.io/optica-miranda/assets/hero-modelo.jpg" alt="Modelo usando un armazón dorado de Óptica Miranda">
+    </div>
+  </div>
+</section>
 
-    <main class="hero">
-        <div class="hero-content">
-            <div class="badge">
-                <span style="display:inline-block; margin-right:4px;">•</span> Envíos a todo el país
-            </div>
-            
-            <h1>Claridad<br>visual con<br><span>estilo propio</span></h1>
-            
-            <p>Armazones de diseño, filtro azul para pantallas y lentes de contacto. Asesoramiento directo sin vueltas.</p>
-            
-            <div class="actions">
-                <a href="#" class="btn btn-green">Consultar WhatsApp</a>
-                <a href="#" class="btn btn-outline">Ver Colecciones</a>
-            </div>
-        </div>
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats">
+      <div><div class="stat-number">+7.000</div><div class="stat-label">Seguidores en Instagram</div></div>
+      <div><div class="stat-number">+32.000</div><div class="stat-label">Me gusta en Facebook</div></div>
+      <div><div class="stat-number">100%</div><div class="stat-label">Paraguay con envíos</div></div>
+      <div><div class="stat-number">6 días</div><div class="stat-label">De atención por semana</div></div>
+    </div>
+  </div>
+</section>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Modelo Destacado</h3>
-                <span class="card-tag">Nuevo Ingreso</span>
-            </div>
-            <div class="glasses-illustration">
-                <!-- SVG estilizado y escalable -->
-                <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="20" y="25" width="65" height="35" rx="12" stroke="#4f46e5" stroke-width="3"/>
-                    <rect x="115" y="25" width="65" height="35" rx="12" stroke="#4f46e5" stroke-width="3"/>
-                    <path d="M85 40 Q100 30 115 40" stroke="#4f46e5" stroke-width="3" fill="none"/>
-                </svg>
-            </div>
+<!-- ENCONTRÁ TU ESTILO -->
+<section>
+  <div class="container">
+    <div class="style-section">
+      <img src="https://diemirandaa.github.io/optica-miranda/assets/armazon-detalle.jpg" alt="Armazón de Óptica Miranda en detalle">
+      <div>
+        <h2>Encontrá tu estilo</h2>
+        <p>Modelos para cada necesidad: uso diario, sol, pantallas, chicos y deporte. Todo lo vas a ver primero en nuestro Instagram.</p>
+        <div class="style-chips">
+          <div class="style-chip"><h3>Armazones</h3><p>La colección más amplia, con modelos nuevos cada semana</p></div>
+          <div class="style-chip"><h3>Lentes de sol</h3><p>Protección UV con estilo, para todos los días</p></div>
+          <div class="style-chip"><h3>Lentes de contacto</h3><p>Blandas, tóricas y descartables de las mejores marcas</p></div>
+          <div class="style-chip"><h3>Filtro de luz azul</h3><p>Para pantallas y jornadas largas frente a la compu</p></div>
+          <div class="style-chip"><h3>Infantiles</h3><p>Armazones resistentes y livianos, pensados para chicos</p></div>
+          <div class="style-chip"><h3>Deportivos</h3><p>Livianos y firmes, ideales para actividad física</p></div>
         </div>
-    </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" style="background: var(--gray-100);">
+  <div class="container">
+    <span class="eyebrow">Servicios</span>
+    <h2>Todo lo que tu vista necesita</h2>
+    <p>Armazones, cristales con la tecnología justa para tu graduación, y el mismo cuidado de siempre, ahora también a todo el país.</p>
+    <div class="services-grid">
+      <div class="service-card"><h3>Armazones de moda</h3><p>Modelos nuevos cada semana, para todos los estilos y edades.</p></div>
+      <div class="service-card"><h3>Lentes de contacto</h3><p>Blandas, tóricas y descartables de las principales marcas.</p></div>
+      <div class="service-card"><h3>Cristales multifocales y bifocales</h3><p>Para présbicia: ves bien de cerca y de lejos sin cambiar de anteojo.</p></div>
+      <div class="service-card"><h3>Tratamiento antirreflejo</h3><p>Reduce el brillo de pantallas y de las luces de noche, sobre todo manejando.</p></div>
+      <div class="service-card"><h3>Filtro de luz azul</h3><p>Ideal para pantallas y jornadas largas frente a la compu.</p></div>
+      <div class="service-card"><h3>Cristales ultra delgados</h3><p>Menos peso y grosor en graduaciones altas, más cómodos y estéticos.</p></div>
+      <div class="service-card"><h3>Reparaciones</h3><p>Ajustes, soldadura y cambio de accesorios mientras esperás en el local.</p></div>
+      <div class="service-card"><h3>Envíos a todo el país</h3><p>Recibí tu pedido en cualquier ciudad de Paraguay.</p></div>
+      <div class="service-card"><h3>Atención personalizada</h3><p>Te asesoramos por WhatsApp antes de que decidas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO COMPRAR -->
+<section id="proceso" class="process-section">
+  <div class="container">
+    <span class="eyebrow">Cómo comprar</span>
+    <h2>Tres pasos, sin pisar el local</h2>
+    <p>Coordinamos todo por WhatsApp: elegís, confirmamos y te llega a domicilio.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-number">01</div>
+        <h3>Elegí en Instagram o Facebook</h3>
+        <p>Mirá los modelos que vamos publicando en <a href="https://www.instagram.com/opticamirandapy/">@opticamirandapy</a>.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-number">02</div>
+        <h3>Consultanos tu graduación</h3>
+        <p>Nos escribís por WhatsApp y te confirmamos precio y stock.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-number">03</div>
+        <h3>Recibilo donde estés</h3>
+        <p>Coordinamos el envío a cualquier punto de Paraguay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 class="text-center" style="text-align:center;">Preguntas frecuentes</h2>
+    <p style="text-align:center;">Todo sobre graduación, armazones y cristales — si tenés otra duda, escribinos por WhatsApp.</p>
+    <div class="faq">
+      <div class="faq-item"><p class="faq-question">¿Cada cuánto se debe renovar la graduación de los anteojos?</p><p class="faq-answer">Lo recomendable es un control visual una vez al año, aunque sientas que ves igual. La mayoría de las recetas quedan desactualizadas entre 1 y 2 años. Te asesoramos para saber si te conviene actualizar tus cristales.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Cómo elijo el armazón según la forma de mi cara?</p><p class="faq-answer">Como guía general: cara redonda, armazones cuadrados o rectangulares; cara cuadrada, armazones redondos u ovalados; cara alargada, armazones más anchos. Si tenés dudas, mandanos una foto por WhatsApp y te ayudamos a elegir.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Cuál es la diferencia entre lentes multifocales y bifocales?</p><p class="faq-answer">Los bifocales tienen dos zonas de graduación separadas por una línea visible, para cerca y lejos. Los multifocales corrigen cerca, lejos y distancia intermedia con una transición gradual y sin línea marcada, por eso suelen ser más cómodos para la présbicia.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Puedo cambiar solo los cristales y conservar mi armazón?</p><p class="faq-answer">Sí, si tu armazón está en buen estado, sin roturas ni bisagras flojas, podés cambiar solo los cristales con tu nueva graduación. Te lo revisamos sin cargo antes de confirmar.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Hacen envíos a todo Paraguay?</p><p class="faq-answer">Sí, hacemos envíos a cualquier ciudad de Paraguay. Nos escribís por WhatsApp, confirmamos tu pedido y lo recibís en tu casa.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Cómo sé mi graduación si compro por WhatsApp?</p><p class="faq-answer">Nos podés mandar una foto de tu receta oftalmológica vigente, o los datos de tu armazón actual si todavía no la tenés. Te asesoramos antes de confirmar la compra.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Qué formas de pago aceptan?</p><p class="faq-answer">Coordinamos la forma de pago directamente por WhatsApp según cada pedido.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Tienen local físico en Villa Elisa?</p><p class="faq-answer">Sí, atendemos en Villa Elisa, Paraguay, de lunes a sábado. Podés visitarnos en el local o coordinar todo por WhatsApp y recibir tu pedido en tu casa.</p></div>
+      <div class="faq-item"><p class="faq-question">¿Hacen reparaciones de armazones?</p><p class="faq-answer">Sí, hacemos ajustes, soldadura y cambio de plaquetas y accesorios mientras esperás en el local.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO Y UBICACIÓN -->
+<section id="ubicacion" style="background: var(--gray-100);">
+  <div class="container">
+    <h2>Horario y ubicación</h2>
+    <div class="hours-location">
+      <div>
+        <h3 style="text-transform:uppercase; letter-spacing:0.5px;">Horario</h3>
+        <table class="hours-table">
+          <tr><td>Lunes a viernes</td><td>8:00 – 18:30</td></tr>
+          <tr><td>Sábados</td><td>8:00 – 13:00</td></tr>
+          <tr><td>Domingos</td><td>Cerrado</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="text-transform:uppercase; letter-spacing:0.5px;">Encontranos</h3>
+        <p><strong>Villa Elisa, Paraguay</strong><br>Si estás cerca, te esperamos en el local. Si no, coordinamos todo por WhatsApp y te llega a domicilio.</p>
+        <a href="https://share.google/ihv1MIpQFgwhGISsz" class="btn btn-secondary">Ver ubicación en el mapa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <span class="eyebrow" style="color: rgba(255,255,255,0.8);">¿Empezamos?</span>
+    <h2>Tu próximo armazón está a un mensaje de distancia</h2>
+    <p>Contanos qué buscás y te asesoramos al toque, sin compromiso.</p>
+    <a href="https://wa.me/595981155755" class="btn btn-primary">Escribinos por WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand">
+          <img src="https://diemirandaa.github.io/optica-miranda/logo.png" alt="Óptica Miranda">
+          Óptica Miranda
+        </div>
+        <p style="color: rgba(255,255,255,0.7); font-size:0.9rem;">Armazones, lentes de contacto y filtro de luz azul, con envíos a todo Paraguay.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo comprar</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/opticamirandapy/">Instagram</a></li>
+          <li><a href="https://web.facebook.com/MirandaOptica/">Facebook</a></li>
+          <li><a href="https://wa.me/595981155755">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://share.google/ihv1MIpQFgwhGISsz">Villa Elisa, Paraguay</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Óptica Miranda — Hecho en Villa Elisa</div>
+</footer>
 
 </body>
 </html>
