@@ -19,8 +19,8 @@ data = { title: "Optica Miranda", body: event.data ? event.data.text() : "" };
 var title = data.title || "Optica Miranda";
 var options = {
 body: data.body || "",
-icon: "logo.png",
-badge: "logo.png",
+icon: "notification-icon.png",
+badge: "notification-icon.png",
 data: { url: data.url || "./" },
 };
 
