@@ -10,8 +10,8 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B4A32">
 <link rel="canonical" href="https://opticamiranda.com.py/">
-<link rel="icon" type="image/png" sizes="512x512" href="notification-icon.png">
-  <link rel="apple-touch-icon" href="notification-icon.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <meta property="og:type" content="business.business">
 <meta property="og:title" content="Óptica Miranda | Óptica en Villa Elisa, Paraguay">
 <meta property="og:description" content="Armazones de moda, lentes de contacto y filtro de luz azul. Atención por WhatsApp y envíos a todo Paraguay.">
@@ -108,14 +108,15 @@
   .btn-primary:hover{background:var(--brand-dark);color:var(--white);}
   .btn-outline{background:transparent;color:var(--ink);border-color:rgba(15,29,23,0.24);}
   .btn-outline:hover{border-color:var(--brand);color:var(--brand);}
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .4s ease, transform .4s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none;} }
   section{position:relative;}
 
   /* ---- motion additions ---- */
   @keyframes heroIn{to{opacity:1;transform:translateY(0);}}
   .hero-anim{opacity:0;transform:translateY(16px);animation:heroIn .75s cubic-bezier(.16,1,.3,1) forwards;}
-  .hero .photo-slot{opacity:0;transform:translateY(16px) scale(.98);animation:heroIn .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:.32s;}
+  .hero .hero-photo-frame{opacity:0;transform:translateY(16px) scale(.98);animation:heroIn .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:.32s;}
 
   .stats-grid .stat:nth-child(1).in{transition-delay:0ms}
   .stats-grid .stat:nth-child(2).in{transition-delay:90ms}
@@ -151,7 +152,7 @@
   }
   @keyframes ctaPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.28);opacity:0}}
   @media (prefers-reduced-motion: reduce){
-    .hero-anim,.hero .photo-slot,.wa-float,.steps.in .step,.cta-band .btn-primary::after,.steps.in .step .idx::after{animation:none !important;opacity:1 !important;transform:none !important;}
+    .hero-anim,.hero .hero-photo-frame,.wa-float,.steps.in .step,.cta-band .btn-primary::after,.steps.in .step .idx::after{animation:none !important;opacity:1 !important;transform:none !important;}
   }
   ::selection{background:var(--brand);color:var(--white);}
   header.site{position:sticky;top:0;z-index:40;background:rgba(251,249,243,0.9);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s ease;}
@@ -174,10 +175,25 @@
   .hero-title{margin:20px 0 0;font-weight:600;color:var(--brand-dark);letter-spacing:-0.01em;font-size:clamp(28px,3.4vw,42px);line-height:1.2;overflow-wrap:break-word;text-wrap:balance;}
   .hero .lede{margin-top:22px;max-width:38ch;font-size:17px;color:var(--ink-soft);}
   .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .hero-photo-frame{position:relative;}
+  .hero-photo-frame::before{
+    content:"";position:absolute;top:-24px;right:-24px;bottom:24px;left:24px;
+    background:var(--brand-dark);border-radius:20px;z-index:0;
+  }
+  .hero-photo-frame::after{
+    content:"";position:absolute;top:36px;left:-20px;width:104px;height:104px;
+    border:1.5px solid var(--gold-soft);border-radius:50%;z-index:0;
+  }
   .photo-slot{
+    position:relative;z-index:1;
     width:100%; aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:var(--brand-mist);
+    box-shadow:var(--shadow-sm);
   }
   .photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;}
+  @media (max-width:640px){
+    .hero-photo-frame::before{top:-16px;right:-16px;bottom:16px;left:16px;border-radius:14px;}
+    .hero-photo-frame::after{width:76px;height:76px;top:22px;left:-14px;}
+  }
   .stats{border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);background:var(--paper-2);}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
   .stat{padding:32px 24px;text-align:center;border-left:1px solid var(--brand-line);}
@@ -257,7 +273,8 @@
     nav.links{display:none;}
     .menu-btn{display:flex;}
     .hero-grid{grid-template-columns:1fr; gap:28px;}
-    .hero-grid .photo-slot{order:-1; aspect-ratio:4/5;}
+    .hero-grid .hero-photo-frame{order:-1;}
+    .hero-grid .photo-slot{aspect-ratio:4/5;}
     .hero{padding:28px 0 48px;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .stat:nth-child(3){border-left:none;}
@@ -274,17 +291,6 @@
     .hero .lede{max-width:none;}
     .photo-slot{aspect-ratio:1/1;}
   }
-
-.push-banner{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);border-top:1px solid var(--gold-soft);box-shadow:0 -10px 30px -18px rgba(6,43,29,0.35);transform:translateY(110%);transition:transform .45s cubic-bezier(.16,1,.3,1);}
-.push-banner.show{transform:translateY(0);}
-.push-banner-inner{max-width:1140px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.push-banner-copy{display:flex;align-items:center;gap:12px;}
-.push-banner-icon{width:36px;height:36px;border-radius:50%;background:var(--brand-mist);display:flex;align-items:center;justify-content:center;flex:none;}
-.push-banner-icon svg{width:18px;height:18px;fill:var(--brand);}
-.push-banner-inner p{font-size:14.5px;color:var(--ink);margin:0;font-weight:600;}
-.push-banner-actions{display:flex;align-items:center;gap:16px;}
-.push-dismiss{background:none;border:none;color:var(--ink-faint);font-size:13.5px;cursor:pointer;text-decoration:underline;padding:0;font-family:inherit;}
-@media (max-width:560px){.push-banner-inner{padding:14px 20px;}}
 </style>
 </head>
 <body>
@@ -323,8 +329,10 @@
         <a class="btn btn-outline" href="#servicios">Ver servicios</a>
       </div>
     </div>
-    <div class="photo-slot">
-      <img src="assets/hero-modelo.jpg" alt="Modelo usando un armazón dorado de Óptica Miranda" loading="eager">
+    <div class="hero-photo-frame">
+      <div class="photo-slot">
+        <img src="assets/hero-modelo.jpg" alt="Modelo usando un armazón dorado de Óptica Miranda" loading="eager">
+      </div>
     </div>
   </div>
 </section>
@@ -481,20 +489,6 @@
     </div>
   </div>
 </section>
-<div class="push-banner" id="pushBanner" role="dialog" aria-label="Activar notificaciones">
-<div class="push-banner-inner">
-<div class="push-banner-copy">
-<span class="push-banner-icon">
-<svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22zm7-6v-5a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2z"/></svg>
-</span>
-<p>¿Querés que te avisemos de nuevos modelos y promos?</p>
-</div>
-<div class="push-banner-actions">
-<button id="pushEnableBtn" class="btn btn-primary btn-sm">Sí, avisame</button>
-<button id="pushDismissBtn" class="push-dismiss" type="button">No, gracias</button>
-</div>
-</div>
-</div>
 <a class="wa-float" href="https://wa.me/595981155755" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.703 4.612 1.912 6.494L4 29l7.703-1.881A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm0 21.6c-1.94 0-3.755-.566-5.276-1.541l-.379-.24-4.573 1.116 1.144-4.457-.247-.396A9.552 9.552 0 0 1 5.4 15c0-5.85 4.751-10.6 10.601-10.6S26.6 9.15 26.6 15 21.851 24.6 16.001 24.6zm5.24-7.34c-.287-.144-1.698-.838-1.961-.934-.263-.096-.455-.144-.646.144-.192.288-.742.934-.909 1.126-.168.192-.335.216-.622.072-.287-.144-1.212-.447-2.309-1.427-.853-.761-1.429-1.701-1.596-1.989-.168-.288-.018-.443.126-.587.129-.129.287-.336.431-.504.144-.168.192-.288.287-.48.096-.192.048-.36-.024-.504-.072-.144-.646-1.559-.885-2.134-.233-.56-.47-.484-.646-.493l-.55-.01c-.192 0-.504.072-.768.36-.263.288-1.006.984-1.006 2.4 0 1.416 1.03 2.784 1.174 2.976.144.192 2.027 3.093 4.911 4.337.686.296 1.221.473 1.638.605.688.219 1.314.188 1.809.114.552-.082 1.698-.694 1.938-1.365.24-.671.24-1.246.168-1.365-.072-.12-.263-.192-.55-.336z"/></svg>
 </a>
@@ -550,12 +544,23 @@
   }
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
+    // rootMargin agranda el área de detección hacia abajo: la sección se revela
+    // mientras todavía está entrando en pantalla, no cuando ya está a la vista.
+    // Así un scroll rápido (flick en mobile, rueda del mouse a fondo) no llega
+    // a ver el hueco en blanco de antes.
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0, rootMargin: '0px 0px 300px 0px' });
     els.forEach(function(el){ io.observe(el); });
+
+    // red de seguridad: si por lo que sea el observer no llegó a disparar
+    // (salto de scroll instantáneo, tab en background, etc.), no dejamos
+    // contenido invisible más de medio segundo.
+    setTimeout(function(){
+      els.forEach(function(el){ el.classList.add('in'); });
+    }, 500);
   } else {
     els.forEach(function(el){ el.classList.add('in'); });
   }
@@ -627,106 +632,6 @@
       if (item.hasAttribute('open')) p.style.maxHeight = p.scrollHeight + 'px';
     });
   });
-})();
-</script>
-<script>
-(function(){
-if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
-
-var VAPID_PUBLIC_KEY = "BJOk9zZxD0hQw6b35IDoUfOdeDgYHxkeqhd1O3_KXjR2BRw-pTxhnuixblNry_6tH_EfbOU0i-llWxRRojCN3EA";
-var SUBSCRIBE_URL = "https://optica-miranda-push.diegomiranda2011.workers.dev/subscribe";
-var DISMISS_KEY = "om_push_dismissed_at";
-var DISMISS_DAYS = 14;
-
-function urlBase64ToUint8Array(base64String){
-var padding = "=".repeat((4 - base64String.length % 4) % 4);
-var base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
-var rawData = window.atob(base64);
-var outputArray = new Uint8Array(rawData.length);
-for (var i = 0; i < rawData.length; ++i) outputArray[i] = rawData.charCodeAt(i);
-return outputArray;
-}
-
-function wasDismissedRecently(){
-try {
-var ts = localStorage.getItem(DISMISS_KEY);
-if (!ts) return false;
-var days = (Date.now() - parseInt(ts, 10)) / 86400000;
-return days < DISMISS_DAYS;
-} catch (e) { return false; }
-}
-
-function markDismissed(){
-try { localStorage.setItem(DISMISS_KEY, String(Date.now())); } catch (e) {}
-}
-
-function sendSubscription(sub){
-return fetch(SUBSCRIBE_URL, {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(sub)
-});
-}
-
-function subscribeUser(registration){
-return registration.pushManager.subscribe({
-userVisibleOnly: true,
-applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-}).then(function(subscription){
-return sendSubscription(subscription.toJSON());
-});
-}
-
-navigator.serviceWorker.register("sw.js").then(function(registration){
-registration.pushManager.getSubscription().then(function(existing){
-if (existing || Notification.permission === "denied" || wasDismissedRecently()) return;
-if (Notification.permission === "granted") {
-subscribeUser(registration);
-return;
-}
-showBannerWhenReady();
-});
-}).catch(function(err){ console.warn("SW register failed", err); });
-
-function showBannerWhenReady(){
-var banner = document.getElementById("pushBanner");
-if (!banner) return;
-var shown = false;
-
-function reveal(){
-if (shown) return;
-shown = true;
-banner.classList.add("show");
-}
-
-setTimeout(reveal, 8000);
-window.addEventListener("scroll", function onScroll(){
-if (window.scrollY > 600) {
-reveal();
-window.removeEventListener("scroll", onScroll);
-}
-}, { passive: true });
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-var banner = document.getElementById("pushBanner");
-var enableBtn = document.getElementById("pushEnableBtn");
-var dismissBtn = document.getElementById("pushDismissBtn");
-if (!banner || !enableBtn || !dismissBtn) return;
-
-enableBtn.addEventListener("click", function(){
-banner.classList.remove("show");
-Notification.requestPermission().then(function(permission){
-if (permission !== "granted") return;
-navigator.serviceWorker.ready.then(subscribeUser);
-});
-});
-
-dismissBtn.addEventListener("click", function(){
-banner.classList.remove("show");
-markDismissed();
-});
-});
 })();
 </script>
 </body>
