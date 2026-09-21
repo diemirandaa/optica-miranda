@@ -8,7 +8,7 @@
 <meta name="keywords" content="óptica Villa Elisa, óptica Paraguay, lentes de contacto Paraguay, armazones Paraguay, filtro de luz azul, Óptica Miranda">
 <meta name="author" content="Óptica Miranda">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0B4A32">
+<meta name="theme-color" content="#26493B">
 <link rel="canonical" href="https://opticamiranda.com.py/">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
@@ -75,20 +75,22 @@
 </script>
 <style>
   :root{
-    --brand:#0B4A32;
-    --brand-dark:#062B1D;
-    --brand-mid:#146B45;
-    --brand-mist:#F1F6F2;
-    --brand-line:rgba(11,74,50,0.16);
+    --brand:#26493B;
+    --brand-dark:#1A322A;
+    --brand-mid:#3F6B58;
+    --brand-mist:#EEF3EE;
+    --brand-sage:#E7EEE7;
+    --brand-line:rgba(38,73,59,0.16);
     --paper:#FBF9F3;
     --paper-2:#F4F1E8;
     --ink:#0F1D17;
     --ink-soft:#425049;
     --ink-faint:#7C8880;
-    --gold:#A9822E;
+    --gold:#B08D4E;
+    --gold-text:#8F6E2A;
     --gold-soft:#D9C48E;
     --white:#FFFFFF;
-    --shadow-sm:0 10px 24px -16px rgba(6,43,29,0.28);
+    --shadow-sm:0 10px 24px -16px rgba(26,50,42,0.28);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -124,7 +126,7 @@
   .stats-grid .stat:nth-child(4).in{transition-delay:270ms}
 
   .col-row,.service-row{transition:transform .3s cubic-bezier(.16,1,.3,1), border-color .3s ease, background-color .3s ease;}
-  .col-row:hover,.service-row:hover{transform:translateX(8px);background-color:rgba(11,74,50,0.035);}
+  .col-row:hover,.service-row:hover{transform:translateX(8px);background-color:rgba(38,73,59,0.035);}
   .col-row .name,.service-row h3{transition:color .3s ease;}
   .col-row:hover .name,.service-row:hover h3{color:var(--brand);}
 
@@ -134,7 +136,7 @@
   .steps.in .step:nth-child(3){animation-delay:300ms}
   .step .idx{position:relative;}
   .steps.in .step .idx::after{
-    content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold-soft);
+    content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold);
     transform:scaleX(0);transform-origin:left center;animation:idxLine .7s cubic-bezier(.16,1,.3,1) forwards;animation-delay:.35s;
   }
   @keyframes idxLine{to{transform:scaleX(1)}}
@@ -147,7 +149,7 @@
 
   .cta-band .btn-primary{position:relative;}
   .cta-band .btn-primary::after{
-    content:"";position:absolute;inset:0;border-radius:3px;border:1.5px solid var(--gold-soft);
+    content:"";position:absolute;inset:0;border-radius:3px;border:1.5px solid var(--gold);
     animation:ctaPulse 2.4s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none;
   }
   @keyframes ctaPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.28);opacity:0}}
@@ -221,15 +223,15 @@
   .service-row h3{font-family:"Domine",serif;font-size:18px;font-weight:600;color:var(--ink);margin:0;}
   .service-row p{color:var(--ink-soft);font-size:14.5px;max-width:52ch;}
   @media (max-width:640px){ .service-row{grid-template-columns:1fr; gap:6px;} }
-  .process{padding:96px 0;background:var(--brand-dark);color:var(--white);}
-  .process .section-head-simple h2, .process .eyebrow{color:var(--white);}
-  .process .eyebrow{color:var(--gold-soft);}
-  .process .section-head-simple p{color:rgba(255,255,255,0.68);}
+  .process{padding:96px 0;background:var(--brand-sage);color:var(--brand-dark);border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);}
+  .process .section-head-simple h2{color:var(--brand-dark);}
+  .process .eyebrow{color:var(--gold-text);}
+  .process .section-head-simple p{color:var(--ink-soft);}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
-  .step .idx{font-family:"Domine",serif;font-size:15px;color:var(--gold-soft);border-bottom:1px solid rgba(255,255,255,0.3);display:inline-block;padding-bottom:6px;margin-bottom:18px;}
+  .step .idx{font-family:"Domine",serif;font-size:15px;color:var(--gold-text);border-bottom:1px solid rgba(38,73,59,0.28);display:inline-block;padding-bottom:6px;margin-bottom:18px;}
   .step h3{margin:0 0 10px;font-size:19px;font-weight:600;font-family:"Domine",serif;}
-  .step p{font-size:14.5px;color:rgba(255,255,255,0.68);}
-  .step a{color:var(--gold-soft);}
+  .step p{font-size:14.5px;color:var(--ink-soft);}
+  .step a{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
   @media (max-width:760px){ .steps{grid-template-columns:1fr;} }
   .faq{padding:100px 0;}
   .faq-list{max-width:760px;}
@@ -266,7 +268,7 @@
   .foot-col a{display:block;color:rgba(255,255,255,0.78);font-size:14.5px;padding:6px 0;}
   .foot-col a:hover{color:var(--gold-soft);}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:12px;}
-  .wa-float{position:fixed;right:22px;bottom:22px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(6,43,29,0.55);transition:transform .2s ease;}
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(26,50,42,0.5);transition:transform .2s ease;}
   .wa-float:hover{transform:scale(1.07);}
   .wa-float svg{width:26px;height:26px;fill:#fff;}
   @media (max-width:980px){
