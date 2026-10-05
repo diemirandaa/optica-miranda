@@ -36,4 +36,16 @@
           <changefreq>monthly</changefreq>
           <priority>0.8</priority>
     </url>
+    <url>
+          <loc>https://opticamiranda.com.py/tratamiento-antirreflejo/</loc>
+          <lastmod>2026-10-04</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>0.8</priority>
+    </url>
+    <url>
+          <loc>https://opticamiranda.com.py/cristales-ultra-delgados/</loc>
+          <lastmod>2026-10-04</lastmod>
+          <changefreq>monthly</changefreq>
+          <priority>0.8</priority>
+    </url>
 </urlset>
