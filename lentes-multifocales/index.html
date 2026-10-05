@@ -13,7 +13,8 @@
 <meta property="og:title" content="Lentes multifocales y bifocales | Óptica Miranda">
 <meta property="og:description" content="Lentes multifocales y bifocales para présbicia en Villa Elisa. Ves de cerca y de lejos con un solo anteojo. Asesoramiento por WhatsApp y envíos a todo Paraguay.">
 <meta property="og:url" content="https://opticamiranda.com.py/lentes-multifocales/">
-<meta property="og:image" content="https://opticamiranda.com.py/logo.png">
+<meta property="og:image" content="https://opticamiranda.com.py/assets/productos/multifocales-lectura.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="es_PY">
 <meta property="og:site_name" content="Óptica Miranda">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,6 +92,16 @@ h2{font-size:22px;margin:40px 0 12px;}
 footer{background:var(--brand-dark);color:rgba(255,255,255,.7);padding:32px 0;font-size:14px;}
 footer a{color:rgba(255,255,255,.85);}
 @media (max-width:560px){.wrap,.nav{padding:0 16px;}.btn{height:44px;padding:0 16px;font-size:14px;}.cta{padding:22px;}}
+
+.photo,.diagram{margin:28px 0 8px;}
+.photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:8px;display:block;background:var(--brand-mist);}
+.diagram svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--ink-faint);margin-top:8px;}
+.compare{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0 8px;}
+.compare .card{background:var(--white);border:1px solid var(--brand-line);border-radius:8px;padding:16px 18px;}
+.compare b{display:block;font-family:"Domine",Georgia,serif;color:var(--brand-dark);font-size:16px;margin-bottom:6px;}
+.compare span{font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+@media (max-width:560px){.compare{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -104,8 +115,46 @@ footer a{color:rgba(255,255,255,.85);}
   <nav class="crumbs" aria-label="Ruta"><a href="../">Inicio</a> › Lentes multifocales</nav>
   <h1>Lentes multifocales y bifocales para ver bien de cerca y de lejos</h1>
   <p class="lede">Si después de los 40 empezaste a alejar el celular para leer, probablemente sea présbicia. Con un solo anteojo podés ver de cerca, a media distancia y de lejos.</p>
+  <figure class="photo">
+    <img src="../assets/productos/multifocales-lectura.jpg" alt="Hombre mayor con anteojos leyendo un libro" width="1200" height="800" loading="eager" decoding="async">
+    <figcaption>Foto: Vitaly Gariev / Unsplash</figcaption>
+  </figure>
       <h2>Multifocales vs. bifocales</h2>
       <p>Los bifocales tienen dos zonas, una para lejos y otra para cerca, separadas por una línea visible. Los multifocales (también llamados progresivos) pasan de lejos a cerca de forma gradual, sin línea, y además corrigen la distancia intermedia, como la pantalla de la compu. Por eso suelen ser más cómodos.</p>
+  <figure class="diagram">
+<svg viewBox="0 0 640 300" role="img" aria-label="Comparación de zonas de visión. Bifocal: zona de lejos arriba y un segmento de cerca abajo separado por una línea visible. Multifocal: lejos arriba, un corredor de visión intermedia en el medio y cerca abajo, sin líneas." font-family="Karla, -apple-system, Segoe UI, sans-serif">
+  <defs>
+    <clipPath id="lensB"><path transform="translate(170 150)" d="M0 -70 C62 -70 110 -48 110 0 C110 52 64 78 0 78 C-64 78 -110 52 -110 0 C-110 -48 -62 -70 0 -70Z"/></clipPath>
+    <clipPath id="lensM"><path transform="translate(470 150)" d="M0 -70 C62 -70 110 -48 110 0 C110 52 64 78 0 78 C-64 78 -110 52 -110 0 C-110 -48 -62 -70 0 -70Z"/></clipPath>
+    <linearGradient id="prog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dce8df"/><stop offset=".42" stop-color="#dce8df"/>
+      <stop offset=".62" stop-color="#e9dcb9"/><stop offset="1" stop-color="#d9c48e"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="300" rx="10" fill="#EEF3EE"/>
+  <text x="170" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#0F1D17">Bifocal</text>
+  <text x="470" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#0F1D17">Multifocal (progresivo)</text>
+  <g clip-path="url(#lensB)">
+    <rect x="50" y="70" width="240" height="170" fill="#dce8df"/>
+    <path d="M118 170 L222 170 Q222 236 170 236 Q118 236 118 170Z" fill="#d9c48e" stroke="#1A322A" stroke-width="2"/>
+  </g>
+  <path transform="translate(170 150)" d="M0 -70 C62 -70 110 -48 110 0 C110 52 64 78 0 78 C-64 78 -110 52 -110 0 C-110 -48 -62 -70 0 -70Z" fill="none" stroke="#1A322A" stroke-width="2.5"/>
+  <text x="170" y="128" text-anchor="middle" font-size="19" font-weight="700" fill="#1A322A">Lejos</text>
+  <text x="170" y="204" text-anchor="middle" font-size="19" font-weight="700" fill="#1A322A">Cerca</text>
+  <g clip-path="url(#lensM)">
+    <rect x="350" y="70" width="240" height="170" fill="url(#prog)"/>
+    <path d="M450 160 Q470 150 490 160 L512 236 L428 236Z" fill="rgba(176,141,78,.28)"/>
+    <path d="M360 236 Q420 150 450 160 L428 236Z M580 236 Q520 150 490 160 L512 236Z" fill="rgba(15,29,23,.10)"/>
+  </g>
+  <path transform="translate(470 150)" d="M0 -70 C62 -70 110 -48 110 0 C110 52 64 78 0 78 C-64 78 -110 52 -110 0 C-110 -48 -62 -70 0 -70Z" fill="none" stroke="#1A322A" stroke-width="2.5"/>
+  <text x="470" y="118" text-anchor="middle" font-size="19" font-weight="700" fill="#1A322A">Lejos</text>
+  <text x="470" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#1A322A">Intermedia</text>
+  <text x="470" y="214" text-anchor="middle" font-size="19" font-weight="700" fill="#1A322A">Cerca</text>
+  <text x="170" y="270" text-anchor="middle" font-size="18" fill="#425049">2 zonas con línea visible</text>
+  <text x="470" y="270" text-anchor="middle" font-size="18" fill="#425049">3 distancias, transición suave, sin línea</text>
+</svg>
+    <figcaption>Zonas de visión en cada tipo de cristal. Ilustración simplificada.</figcaption>
+  </figure>
       <h2>Cuánto tarda la adaptación</h2>
       <p>La mayoría de las personas se adapta a los multifocales en pocos días. Al principio hay que aprender a mover un poco la cabeza en lugar de solo los ojos. Te explicamos cómo usarlos cuando los retirás.</p>
       <h2>Cristales recomendados</h2>
