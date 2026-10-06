@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/geist";
+
+/*
+  Sistema visual Óptica Miranda
+  - Paleta "bosque": el verde del logo (#024830) + un único acento lima.
+  - Radios: botones = pill; fotos y paneles = 28px; chips internos = 14px.
+*/
+@theme {
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand: #024830;
+  --color-brand-deep: #01301f;
+  --color-lima: #c9f26b;
+  --color-lima-soft: #e6f8b8;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-tint: var(--tint);
+
+  --radius-panel: 28px;
+  --radius-chip: 14px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --bg: #f2f5f1;
+  --surface: #fbfcfa;
+  --ink: #0c1d15;
+  --muted: #4b5d54;
+  --line: rgb(2 72 48 / 0.12);
+  --tint: #e3ebe4;
+  color-scheme: light;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.035em;
+}
+
+::selection { background: var(--color-lima); color: var(--color-brand-deep); }
+
+:focus-visible {
+  outline: 3px solid var(--color-lima);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex; align-items: center; gap: .6rem;
+  white-space: nowrap; border-radius: 999px;
+  font-weight: 600; line-height: 1;
+  transition: transform .4s var(--ease-out-expo), background-color .3s, color .3s, box-shadow .4s var(--ease-out-expo);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--color-brand); color: #fff;
+  padding: 1.05rem 1.5rem 1.05rem 1.25rem;
+  box-shadow: 0 10px 30px -12px rgb(2 72 48 / .55);
+}
+.btn-primary:hover { background: var(--color-brand-deep); transform: translateY(-2px); box-shadow: 0 16px 36px -14px rgb(2 72 48 / .6); }
+.btn-primary .btn-dot {
+  display: grid; place-items: center; width: 1.9rem; height: 1.9rem;
+  border-radius: 999px; background: var(--color-lima); color: var(--color-brand-deep);
+}
+.btn-ghost {
+  padding: 1.05rem 1.4rem; color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+/* Entrada del hero (CSS, sin JS) */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { opacity: 0; transform: translateY(18px); animation: rise .9s var(--ease-out-expo) forwards; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* Reveal al scrollear: lo activa el script solo si hay JS */
+  .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out-expo) var(--d, 0s), transform .9s var(--ease-out-expo) var(--d, 0s); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+  /* Foto del hero: leve zoom-out atado al scroll */
+  @supports (animation-timeline: view()) {
+    .scroll-zoom { animation: zoomout linear both; animation-timeline: view(); animation-range: exit -20% exit 80%; }
+    @keyframes zoomout { to { transform: scale(1.12); } }
+  }
+
+  .marquee-track { animation: marquee 38s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+}
+
+/* Acordeón FAQ */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details .faq-icon { transition: transform .45s var(--ease-out-expo); }
+details[open] .faq-icon { transform: rotate(45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  details::details-content { transition: height .45s var(--ease-out-expo), content-visibility .45s allow-discrete; height: 0; overflow: clip; }
+  details[open]::details-content { height: auto; }
+  :root { interpolate-size: allow-keywords; }
+}
+
+/* Tarjetas del bento: zoom suave de la foto */
+.tile img { transition: transform 1.1s var(--ease-out-expo); }
+.tile:hover img { transform: scale(1.05); }
+.tile .tile-arrow { transition: transform .5s var(--ease-out-expo), background-color .3s; }
+.tile:hover .tile-arrow { transform: rotate(-45deg); background: var(--color-lima); color: var(--color-brand-deep); }

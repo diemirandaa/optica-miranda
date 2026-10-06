@@ -1,0 +1,25 @@
+---
+interface Props { faqs: { q: string; a: string }[]; titulo?: string; id?: string }
+const { faqs, titulo = 'Preguntas frecuentes', id } = Astro.props;
+import { Icon } from 'astro-icon/components';
+---
+<section id={id} class="px-4 pt-24 md:pt-32">
+  <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-12">
+    <div class="md:col-span-4">
+      <h2 data-reveal class="font-display text-4xl leading-[1.05] font-semibold md:sticky md:top-28 md:text-[3.4rem]">{titulo}</h2>
+    </div>
+    <div class="md:col-span-8">
+      {faqs.map((f, i) => (
+        <details data-reveal data-delay={i * 0.04} class="group border-b border-line" name="faq">
+          <summary class="flex items-center justify-between gap-6 py-6 text-lg font-semibold md:text-xl">
+            {f.q}
+            <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full bg-tint text-brand">
+              <Icon name="ph:plus-bold" class="h-4 w-4" />
+            </span>
+          </summary>
+          <p class="max-w-[60ch] pb-7 leading-relaxed text-muted">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

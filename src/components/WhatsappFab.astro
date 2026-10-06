@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../data/site';
+---
+<!-- WhatsApp flotante: aparece cuando el botón principal (#hero-cta) sale de pantalla -->
+<a
+  id="fab"
+  href={site.whatsapp}
+  target="_blank"
+  rel="noopener"
+  aria-label="Escribinos por WhatsApp"
+  class="fixed right-4 bottom-4 z-30 grid h-14 w-14 translate-y-24 place-items-center rounded-full bg-brand text-white opacity-0 shadow-[0_14px_30px_-10px_rgb(2_72_48/0.6)] transition-all duration-500 ease-[var(--ease-out-expo)] data-[show]:translate-y-0 data-[show]:opacity-100 md:right-6 md:bottom-6"
+>
+  <Icon name="ph:whatsapp-logo-bold" class="h-7 w-7" />
+</a>
+<script>
+  const fab = document.getElementById('fab');
+  const cta = document.getElementById('hero-cta');
+  if (fab && cta) {
+    new IntersectionObserver(([e]) => fab.toggleAttribute('data-show', !e.isIntersecting)).observe(cta);
+  } else {
+    fab?.setAttribute('data-show', '');
+  }
+</script>

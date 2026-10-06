@@ -1,0 +1,113 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Faq from '../components/Faq.astro';
+import Cierre from '../components/Cierre.astro';
+import OtrosServicios from '../components/OtrosServicios.astro';
+import WhatsappFab from '../components/WhatsappFab.astro';
+import { servicios, type Servicio } from '../data/servicios';
+import { breadcrumb, faqPage, service } from '../data/schema';
+import { site } from '../data/site';
+
+export function getStaticPaths() {
+  return servicios.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+
+const { s } = Astro.props as { s: Servicio };
+---
+<Base
+  title={s.title}
+  description={s.description}
+  schema={[service(s.nombre, s.description, s.slug), faqPage(s.faqs), breadcrumb(s.nombre, s.slug)]}
+>
+  <Header />
+
+  <main>
+    <!-- HERO -->
+    <section class="px-4 pt-28 md:pt-32">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-6">
+          <nav aria-label="Ruta" class="rise text-sm text-muted" style="--i:0">
+            <ol class="flex items-center gap-2">
+              <li><a href="/" class="transition-colors hover:text-brand">Inicio</a></li>
+              <li aria-hidden="true"><Icon name="ph:caret-right" class="h-3.5 w-3.5" /></li>
+              <li aria-current="page" class="font-medium text-ink">{s.nombre}</li>
+            </ol>
+          </nav>
+          <h1 class="rise font-display mt-6 text-[2.4rem] leading-[1.05] font-semibold text-balance sm:text-5xl lg:text-[3.4rem]" style="--i:1">
+            {s.h1}
+          </h1>
+          <p class="rise mt-6 max-w-[46ch] text-lg leading-relaxed text-muted" style="--i:2">{s.lede}</p>
+          <div class="rise mt-9" style="--i:3" id="hero-cta">
+            <a href={site.whatsapp} target="_blank" rel="noopener" class="btn btn-primary text-base">
+              <span class="btn-dot"><Icon name="ph:whatsapp-logo-bold" class="h-[18px] w-[18px]" /></span>
+              Escribinos
+            </a>
+          </div>
+        </div>
+        <div class="rise lg:col-span-6" style="--i:2">
+          <div class="overflow-hidden rounded-[var(--radius-panel)] bg-tint">
+            <Picture
+              src={s.hero}
+              formats={['avif', 'webp']}
+              widths={[480, 760, 1100]}
+              sizes="(min-width: 1024px) 540px, 92vw"
+              alt={s.heroAlt}
+              class="aspect-[4/3] h-full w-full object-cover"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <div class="px-4 pt-20 md:pt-28">
+      <div class="mx-auto max-w-6xl divide-y divide-line">
+        {s.secciones.map((sec) => (
+          <section class="grid gap-6 py-12 first:pt-0 md:grid-cols-12 md:gap-10 md:py-16">
+            <h2 data-reveal class="font-display text-[1.9rem] leading-[1.1] font-semibold md:col-span-4 md:text-4xl">{sec.titulo}</h2>
+            <div class="md:col-span-8">
+              {sec.texto && <p data-reveal data-delay="0.06" class="max-w-[62ch] text-lg leading-relaxed text-muted">{sec.texto}</p>}
+              {sec.items && (
+                <ul class="grid gap-3 sm:grid-cols-2">
+                  {sec.items.map((it, i) => (
+                    <li data-reveal data-delay={i * 0.06} class="rounded-[22px] bg-tint p-6">
+                      <span class="grid h-9 w-9 place-items-center rounded-full bg-lima text-brand-deep">
+                        <Icon name="ph:check-bold" class="h-4 w-4" />
+                      </span>
+                      <h3 class="font-display mt-4 text-xl font-semibold">{it.titulo}</h3>
+                      <p class="mt-1.5 leading-relaxed text-muted">{it.texto}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {sec.img && (
+                <figure data-reveal class="mt-8 first:mt-0">
+                  <div class="overflow-hidden rounded-[var(--radius-panel)]">
+                    <Picture src={sec.img} formats={['avif', 'webp']} widths={[480, 800, 1100]} sizes="(min-width: 1024px) 720px, 92vw" alt={sec.imgAlt ?? ''} class="aspect-[16/9] h-full w-full object-cover" />
+                  </div>
+                  {sec.caption && <figcaption class="mt-3 text-sm text-muted">{sec.caption}</figcaption>}
+                </figure>
+              )}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+
+    <Faq faqs={s.faqs} />
+    <OtrosServicios actual={s.slug} />
+    <Cierre
+      titulo="¿Te asesoramos?"
+      texto={`Escribinos por WhatsApp y te respondemos con precios y stock. Si estás cerca, visitanos en ${site.address}, Villa Elisa.`}
+    />
+  </main>
+
+  <Footer />
+  <WhatsappFab />
+</Base>

@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { servicios } from '../data/servicios';
+interface Props { actual: string }
+const otros = servicios.filter((s) => s.slug !== Astro.props.actual);
+---
+<section class="px-4 pt-24 md:pt-32">
+  <div class="mx-auto max-w-6xl">
+    <h2 data-reveal class="font-display text-3xl leading-[1.05] font-semibold md:text-[2.6rem]">Otros servicios</h2>
+    <ul class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+      {otros.map((s, i) => (
+        <li data-reveal data-delay={(i % 3) * 0.06}>
+          <a href={`/${s.slug}/`} class="tile group flex h-full items-center gap-4 rounded-[22px] border border-line bg-surface p-3 pr-4 transition-colors hover:border-brand/30 max-md:flex-col max-md:items-start">
+            <span class="relative block aspect-square w-20 shrink-0 overflow-hidden rounded-[var(--radius-chip)] bg-lima max-md:w-full max-md:aspect-[4/3]">
+              {s.tarjeta
+                ? <Picture src={s.tarjeta} formats={['avif', 'webp']} widths={[200, 400]} sizes="(min-width: 768px) 80px, 45vw" alt="" class="h-full w-full object-cover" />
+                : <Icon name="ph:wrench" class="absolute inset-0 m-auto h-8 w-8 text-brand-deep" />}
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="font-display block text-lg leading-tight font-semibold">{s.nombre}</span>
+              <span class="mt-1 block text-sm leading-snug text-muted">{s.resumen}</span>
+            </span>
+            <Icon name="ph:arrow-right-bold" class="h-4 w-4 shrink-0 text-brand transition-transform group-hover:translate-x-1 max-md:hidden" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

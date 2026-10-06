@@ -1,0 +1,248 @@
+---
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+import Faq from '../components/Faq.astro';
+import Cierre from '../components/Cierre.astro';
+import WhatsappFab from '../components/WhatsappFab.astro';
+import { servicios } from '../data/servicios';
+import { optician, faqPage } from '../data/schema';
+
+import heroModelo from '../assets/fotos/hero-modelo.jpg';
+import armazon from '../assets/fotos/armazon-detalle.jpg';
+import fachada from '../assets/fotos/fachada-local.jpg';
+
+const ventajas = [
+  { icon: 'ph:sun', text: 'Protección UV en todos los lentes de sol' },
+  { icon: 'ph:wrench', text: 'Reparaciones en 24 horas, también de otras ópticas' },
+  { icon: 'ph:eye', text: 'Lentes de contacto tóricos' },
+  { icon: 'ph:truck', text: 'Envíos a todo Paraguay' },
+  { icon: 'ph:star', text: `${site.rating} en Google` },
+  { icon: 'ph:tag', text: `Armazones desde ${site.framesFrom}` },
+];
+
+// Bento de servicios: 4 columnas x 3 filas en desktop, 2 columnas en mobile.
+// Las clases van en el mismo orden que `servicios`.
+const layout = [
+  { cls: 'col-span-2 row-span-2 min-h-[340px]', big: true },
+  { cls: 'col-span-2 md:col-span-1 md:row-span-2 min-h-[260px]' },
+  { cls: 'col-span-1 min-h-[220px]' },
+  { cls: 'col-span-1 min-h-[220px]' },
+  { cls: 'col-span-2 min-h-[220px]' },
+  { cls: 'col-span-1 min-h-[220px]' },
+  { cls: 'col-span-1 min-h-[220px]' },
+];
+const tiles = servicios.map((sv, i) => ({
+  title: sv.nombre, desc: sv.resumen, href: `/${sv.slug}/`, img: sv.tarjeta, big: false, ...layout[i],
+}));
+
+const pasos = [
+  { title: 'Mandá tu receta', text: 'Sacale una foto a la receta de tu oftalmólogo y enviala por WhatsApp.' },
+  { title: 'Elegí tu armazón', text: 'Te mostramos modelos y te pasamos el presupuesto completo con los cristales.' },
+  { title: 'Recibilo', text: 'Te lo enviamos a domicilio, o lo retirás en el local si te queda cerca.' },
+];
+
+const faqs = [
+  { q: '¿Necesito receta para comprar anteojos graduados?', a: 'Sí. La receta la indica tu oftalmólogo y nosotros preparamos los anteojos según esa receta. Si ya la tenés, mandanos una foto por WhatsApp.' },
+  { q: '¿Cuánto cuesta un par de anteojos?', a: `Los armazones arrancan en ${site.framesFrom}. Los cristales graduados se suman según tu receta y los tratamientos que elijas. Te pasamos el presupuesto completo antes de confirmar.` },
+  { q: '¿Arreglan anteojos que no compré con ustedes?', a: 'Sí, reparamos anteojos de cualquier óptica. La reparación lleva 24 horas.' },
+  { q: '¿Los lentes de sol tienen protección UV?', a: 'Sí, todos los lentes de sol que vendemos tienen protección UV.' },
+  { q: '¿Tienen lentes de contacto para astigmatismo?', a: 'Sí, trabajamos lentes de contacto tóricos, que corrigen el astigmatismo.' },
+  { q: '¿Hacen envíos a todo Paraguay?', a: 'Sí, hacemos envíos a cualquier ciudad de Paraguay. Nos escribís por WhatsApp, confirmamos tu pedido y lo recibís en tu casa.' },
+  { q: '¿Puedo cambiar solo los cristales y conservar mi armazón?', a: 'Sí, si tu armazón está en buen estado, sin roturas ni bisagras flojas, podés cambiar solo los cristales con tu nueva graduación. Te lo revisamos sin cargo antes de confirmar.' },
+  { q: '¿Qué formas de pago aceptan?', a: 'Coordinamos la forma de pago directamente por WhatsApp según cada pedido.' },
+];
+---
+<Base
+  title="Óptica en Villa Elisa | Óptica Miranda – Anteojos y Lentes"
+  description="Óptica en Villa Elisa: anteojos recetados, lentes de sol y de contacto. Armazones desde Gs. 150.000. Consultá por WhatsApp y recibí en todo Paraguay."
+  schema={[optician(), faqPage(faqs)]}
+>
+  <Header />
+
+  <main>
+    <!-- HERO -->
+    <section class="relative px-4 pt-28 md:pt-32">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-6 lg:pr-6">
+          <h1>
+            <span class="rise inline-flex items-center gap-2 rounded-full bg-tint px-3.5 py-1.5 text-sm font-medium text-muted" style="--i:0">
+              <Icon name="ph:map-pin-fill" class="h-4 w-4 text-brand" />
+              Óptica en Villa Elisa<span class="sr-only">:</span>
+            </span>
+            <span class="rise font-display mt-6 block text-[2.85rem] leading-[1.02] font-semibold sm:text-6xl lg:text-[4.35rem]" style="--i:1">
+              <span class="block">Tus anteojos,</span> a tu medida y <span class="whitespace-nowrap text-brand">en tu casa.</span>
+            </span>
+          </h1>
+          <p class="rise mt-6 max-w-[34ch] text-lg leading-relaxed text-muted md:text-xl" style="--i:2">
+            Armazones, cristales recetados y lentes de contacto. Mandanos tu receta por WhatsApp y te lo enviamos.
+          </p>
+          <div class="rise mt-9 flex flex-wrap items-center gap-3" style="--i:3" id="hero-cta">
+            <a href={site.whatsapp} target="_blank" rel="noopener" class="btn btn-primary text-base">
+              <span class="btn-dot"><Icon name="ph:whatsapp-logo-bold" class="h-[18px] w-[18px]" /></span>
+              Escribinos
+            </a>
+            <a href="#servicios" class="btn btn-ghost text-base">Ver servicios</a>
+          </div>
+        </div>
+
+        <div class="relative lg:col-span-6">
+          <div class="rise relative mx-auto aspect-[4/5] max-h-[620px] w-full max-w-[500px] overflow-hidden rounded-t-[999px] rounded-b-[var(--radius-panel)] bg-tint lg:ml-auto" style="--i:2">
+            <Picture
+              src={heroModelo}
+              formats={['avif', 'webp']}
+              widths={[480, 760, 1000]}
+              sizes="(min-width: 1024px) 500px, 92vw"
+              alt="Mujer con anteojos de armazón dorado"
+              class="scroll-zoom h-full w-full object-cover object-[50%_20%]"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="rise absolute -bottom-6 left-0 hidden aspect-square w-44 overflow-hidden rounded-full border-[6px] border-bg shadow-[0_24px_50px_-20px_rgb(2_72_48/0.45)] sm:block lg:-left-4 lg:w-52" style="--i:4">
+            <Picture src={armazon} formats={['avif', 'webp']} widths={[220, 420]} sizes="208px" alt="Armazón metálico sostenido en la mano" class="h-full w-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENTAJAS (marquee) -->
+    <section class="marquee mt-20 overflow-hidden border-y border-line py-5 md:mt-28" aria-label="Por qué elegirnos">
+      <ul class="marquee-track flex w-max gap-12 pr-12 text-[15px] font-medium whitespace-nowrap text-muted md:text-base">
+        {[...ventajas, ...ventajas].map((v, i) => (
+          <li class="flex items-center gap-3" aria-hidden={i >= ventajas.length ? 'true' : undefined}>
+            <Icon name={v.icon} class="h-5 w-5 text-brand" />
+            {v.text}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- SERVICIOS (bento) -->
+    <section id="servicios" class="px-4 pt-24 md:pt-32">
+      <div class="mx-auto max-w-6xl">
+        <h2 data-reveal class="font-display max-w-[16ch] text-4xl leading-[1.05] font-semibold md:text-[3.4rem]">
+          Cristales, lentes y arreglos.
+        </h2>
+        <p data-reveal data-delay="0.08" class="mt-5 max-w-[52ch] text-lg leading-relaxed text-muted">
+          Todo lo que necesitás para ver bien, en un solo lugar. Tocá cada servicio para ver los detalles.
+        </p>
+
+        <div class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-[260px_260px_230px] md:gap-4">
+          {tiles.map((t, i) => (
+            <a
+              href={t.href}
+              data-reveal
+              data-delay={(i % 4) * 0.06}
+              class:list={[
+                'tile group relative flex flex-col justify-end overflow-hidden rounded-[var(--radius-panel)] p-5 md:min-h-0 md:p-6',
+                t.cls,
+                t.img ? 'bg-brand-deep text-white' : 'bg-lima text-brand-deep',
+              ]}
+            >
+              {t.img ? (
+                <>
+                  <Picture src={t.img} formats={['avif', 'webp']} widths={[400, 700, 1000]} sizes={t.big ? '(min-width: 768px) 560px, 92vw' : '(min-width: 768px) 280px, 46vw'} alt="" class="absolute inset-0 h-full w-full object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+                </>
+              ) : (
+                <Icon name="ph:wrench" class="absolute top-6 left-6 h-10 w-10" />
+              )}
+              <span class:list={['tile-arrow absolute top-4 right-4 grid h-10 w-10 place-items-center rounded-full backdrop-blur-md', t.img ? 'bg-white/15 text-white' : 'bg-brand-deep/10']}>
+                <Icon name="ph:arrow-right-bold" class="h-4 w-4" />
+              </span>
+              <div class="relative">
+                <h3 class:list={['font-display font-semibold leading-tight', t.big ? 'text-3xl md:text-4xl' : 'text-xl md:text-[1.4rem]']}>{t.title}</h3>
+                <p class:list={['mt-1.5 text-sm leading-snug md:text-[15px]', t.img ? 'text-white/80' : 'text-brand-deep/75', !t.big && t.img && 'max-md:hidden']}>{t.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO COMPRAR -->
+    <section id="como-comprar" class="px-4 pt-24 md:pt-32">
+      <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[var(--radius-panel)] bg-brand px-6 py-14 text-white md:px-14 md:py-20">
+        <div class="pointer-events-none absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-lima/10 blur-3xl"></div>
+        <h2 data-reveal class="font-display relative max-w-[14ch] text-4xl leading-[1.05] font-semibold md:text-[3.4rem]">
+          Tres pasos, desde tu casa.
+        </h2>
+        <ol class="relative mt-14 grid gap-10 md:grid-cols-3 md:gap-0">
+          {pasos.map((p, i) => (
+            <li data-reveal data-delay={i * 0.1} class="relative md:pr-10">
+              <div class="flex items-center gap-4">
+                <span class="font-display grid h-12 w-12 shrink-0 place-items-center rounded-full bg-lima text-xl font-semibold text-brand-deep">{i + 1}</span>
+                {i < pasos.length - 1 && <span class="hidden h-px flex-1 bg-white/20 md:block"></span>}
+              </div>
+              <h3 class="font-display mt-6 text-2xl font-semibold">{p.title}</h3>
+              <p class="mt-2 max-w-[30ch] leading-relaxed text-white/75">{p.text}</p>
+            </li>
+          ))}
+        </ol>
+        <div data-reveal class="relative mt-14">
+          <a href={site.whatsapp} target="_blank" rel="noopener" class="btn bg-lima py-4 pr-6 pl-4 text-base text-brand-deep hover:-translate-y-0.5 hover:bg-white">
+            <Icon name="ph:whatsapp-logo-bold" class="h-5 w-5" />
+            Escribinos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIO -->
+    <section class="px-4 pt-24 md:pt-32">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-12 md:gap-12">
+        <div data-reveal class="overflow-hidden rounded-[var(--radius-panel)] md:col-span-5">
+          <Picture src={armazon} formats={['avif', 'webp']} widths={[480, 800]} sizes="(min-width: 768px) 440px, 92vw" alt="Detalle de un armazón metálico" class="aspect-square h-full w-full object-cover" />
+        </div>
+        <div class="md:col-span-7 md:pl-6">
+          <p data-reveal class="text-lg font-medium text-muted">Armazones desde</p>
+          <p data-reveal data-delay="0.06" class="font-display mt-1 text-[3.6rem] leading-none font-semibold text-brand sm:text-7xl lg:text-[6.5rem]">
+            {site.framesFrom}
+          </p>
+          <p data-reveal data-delay="0.12" class="mt-8 max-w-[44ch] text-lg leading-relaxed text-muted">
+            El precio es del armazón. Los cristales graduados se cotizan según tu receta y los tratamientos que elijas, y te pasamos el total antes de confirmar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL LOCAL -->
+    <section id="local" class="px-4 pt-24 md:pt-32">
+      <div class="mx-auto max-w-6xl">
+        <h2 data-reveal class="font-display text-4xl leading-[1.05] font-semibold md:text-[3.4rem]">Pasá por el local.</h2>
+        <div class="relative mt-10">
+          <div data-reveal class="overflow-hidden rounded-[var(--radius-panel)]">
+            <Picture src={fachada} formats={['avif', 'webp']} widths={[640, 1136]} sizes="(min-width: 1152px) 1152px, 92vw" alt="Fachada de Óptica Miranda en Villa Elisa" class="aspect-[16/10] h-full w-full object-cover md:aspect-[21/9]" />
+          </div>
+          <div data-reveal data-delay="0.1" class="relative -mt-10 mx-3 rounded-[22px] border border-line bg-surface p-6 shadow-[0_30px_60px_-30px_rgb(2_72_48/0.35)] md:absolute md:bottom-6 md:left-6 md:m-0 md:w-[380px] md:p-7">
+            <p class="font-display text-xl font-semibold">{site.address}</p>
+            <p class="mt-1 text-muted">{site.city}</p>
+            <dl class="mt-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              {site.horario.map(([d, h]) => (<><dt class="text-muted">{d}</dt><dd class="font-medium">{h}</dd></>))}
+            </dl>
+            <div class="mt-4 flex items-center gap-2 text-sm text-muted">
+              <Icon name="ph:star-fill" class="h-5 w-5 text-brand" />
+              <span><strong class="text-ink">{site.rating}</strong> de 5 en Google</span>
+            </div>
+            <a href={site.maps} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 font-semibold text-brand underline decoration-2 underline-offset-4 hover:decoration-lima">
+              Cómo llegar <Icon name="ph:arrow-up-right-bold" class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Faq id="preguntas" faqs={faqs} />
+
+    <Cierre titulo="¿Tenés tu receta a mano?" texto="Mandanos una foto y te pasamos opciones y presupuesto." />
+  </main>
+
+  <Footer />
+
+  <WhatsappFab />
+</Base>

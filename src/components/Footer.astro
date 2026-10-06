@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import logo from '../assets/logo.png';
+import { site } from '../data/site';
+
+import { servicios } from '../data/servicios';
+---
+<footer class="px-4 pb-4">
+  <div class="mx-auto max-w-6xl rounded-[var(--radius-panel)] border border-line bg-surface px-6 py-12 text-muted md:px-12 md:py-14">
+    <div class="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
+      <div>
+        <Image src={logo} alt="Óptica Miranda" width={140} class="h-auto w-[132px]" />
+        <p class="mt-6 max-w-xs text-[15px] leading-relaxed text-muted">
+          Óptica en Villa Elisa. Armazones, cristales recetados, lentes de contacto y reparaciones, con envío a domicilio.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-sm font-semibold text-ink">Servicios</h2>
+        <ul class="mt-4 space-y-2.5 text-[15px]">
+          {servicios.map((sv) => <li><a href={`/${sv.slug}/`} class="transition-colors hover:text-brand">{sv.nombre}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-sm font-semibold text-ink">Contacto</h2>
+        <ul class="mt-4 space-y-3 text-[15px]">
+          <li><a href={site.whatsapp} target="_blank" rel="noopener" class="flex items-center gap-2.5 transition-colors hover:text-brand"><Icon name="ph:whatsapp-logo" class="h-5 w-5" />{site.phoneDisplay}</a></li>
+          <li><a href={site.instagram} target="_blank" rel="noopener" class="flex items-center gap-2.5 transition-colors hover:text-brand"><Icon name="ph:instagram-logo" class="h-5 w-5" />{site.instagramHandle}</a></li>
+          <li><a href={site.facebook} target="_blank" rel="noopener" class="flex items-center gap-2.5 transition-colors hover:text-brand"><Icon name="ph:facebook-logo" class="h-5 w-5" />MirandaOptica</a></li>
+          <li><a href={site.maps} target="_blank" rel="noopener" class="flex items-start gap-2.5 transition-colors hover:text-brand"><Icon name="ph:map-pin" class="mt-0.5 h-5 w-5 shrink-0" /><span>{site.address}<br />{site.city}</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-14 border-t border-line pt-6 text-sm text-muted/80">© {new Date().getFullYear()} Óptica Miranda</p>
+  </div>
+</footer>

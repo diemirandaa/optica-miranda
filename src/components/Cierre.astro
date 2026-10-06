@@ -1,0 +1,18 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../data/site';
+interface Props { titulo: string; texto: string }
+const { titulo, texto } = Astro.props;
+---
+<section class="px-4 py-24 md:py-36">
+  <div class="mx-auto flex max-w-6xl flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
+    <h2 data-reveal class="font-display max-w-[16ch] text-balance text-5xl leading-[1.02] font-semibold md:text-7xl">{titulo}</h2>
+    <div data-reveal data-delay="0.1" class="md:pb-3">
+      <p class="mb-6 max-w-[34ch] text-lg leading-relaxed text-muted">{texto}</p>
+      <a href={site.whatsapp} target="_blank" rel="noopener" class="btn btn-primary text-base">
+        <span class="btn-dot"><Icon name="ph:whatsapp-logo-bold" class="h-[18px] w-[18px]" /></span>
+        Escribinos
+      </a>
+    </div>
+  </div>
+</section>
